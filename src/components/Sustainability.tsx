@@ -30,17 +30,17 @@ const Sustainability = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl order-2 lg:order-1">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl order-2 lg:order-1 animate-slide-in-left">
             <img
               src={sustainabilityImage}
               alt="Sustainable irrigation systems"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-accent/30 to-transparent" />
           </div>
 
           {/* Content */}
-          <div className="order-1 lg:order-2">
+          <div className="order-1 lg:order-2 animate-slide-in-right">
             <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Leaf className="h-4 w-4" />
               Environmental Stewardship

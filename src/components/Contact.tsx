@@ -65,7 +65,7 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Get in Touch
           </h2>
@@ -107,7 +107,11 @@ const Contact = () => {
 
             <div className="space-y-6">
               {locations.map((location, index) => (
-                <div key={index} className="p-6 bg-card rounded-xl border border-border">
+                <div 
+                  key={index} 
+                  className="p-6 bg-card rounded-xl border border-border hover-lift animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <div className="flex gap-3 items-start mb-3">
                     <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                     <div>
@@ -142,7 +146,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
+          <div className="bg-card rounded-2xl p-8 border border-border shadow-lg animate-scale-in animate-delay-200">
             <h3 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">

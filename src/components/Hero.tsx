@@ -25,30 +25,30 @@ const Hero = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight animate-fade-in">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight animate-fade-in animate-delay-100">
             Quality Plastic Piping
             <span className="block text-primary mt-2">Solutions for Africa</span>
           </h1>
 
           {/* Description */}
-          <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed animate-fade-in max-w-2xl">
+          <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed animate-fade-in animate-delay-200 max-w-2xl">
             Manufacturing premium PVC and HDPE pipe systems for water reticulation, 
             irrigation, mining, and construction across Southern Africa.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in">
-            <Button size="lg" className="group">
+          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in animate-delay-300">
+            <Button size="lg" className="group hover-lift">
               Explore Products
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline">
+            <Button size="lg" variant="outline" className="hover-lift">
               Request Catalogue
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-border animate-fade-in">
+          <div className="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-border animate-fade-in animate-delay-400">
             <div>
               <div className="text-3xl font-bold text-primary mb-1">35+</div>
               <div className="text-sm text-muted-foreground">Years Experience</div>

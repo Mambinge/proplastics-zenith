@@ -28,7 +28,7 @@ const About = () => {
     <section id="about" className="py-24 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             About Proplastics Zimbabwe
           </h2>
@@ -38,8 +38,8 @@ const About = () => {
         </div>
 
         {/* Company Overview */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="bg-card rounded-2xl p-8 sm:p-12 shadow-lg border border-border">
+        <div className="max-w-4xl mx-auto mb-16 animate-scale-in animate-delay-100">
+          <div className="bg-card rounded-2xl p-8 sm:p-12 shadow-lg border border-border hover-lift">
             <p className="text-lg text-foreground leading-relaxed mb-6">
               <strong className="text-primary">Proplastics Zimbabwe Limited</strong> is the leading 
               manufacturer and supplier of plastic pipe systems and fittings in Zimbabwe and the broader 
@@ -62,7 +62,8 @@ const About = () => {
           {values.map((value, index) => (
             <div
               key={index}
-              className="bg-card rounded-xl p-6 border border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="bg-card rounded-xl p-6 border border-border hover-lift animate-fade-in"
+              style={{ animationDelay: `${0.2 + index * 0.1}s` }}
             >
               <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <value.icon className="h-6 w-6 text-primary" />

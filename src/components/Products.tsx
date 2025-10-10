@@ -25,7 +25,7 @@ const Products = () => {
     <section id="products" className="py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Our Product Range
           </h2>
@@ -39,7 +39,9 @@ const Products = () => {
           {productCategories.map((category, index) => (
             <div
               key={index}
-              className="bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 group"
+              className={`bg-card rounded-2xl overflow-hidden border border-border hover-lift group ${
+                index === 0 ? 'animate-slide-in-left' : 'animate-slide-in-right'
+              }`}
             >
               {/* Image */}
               <div className="relative h-64 overflow-hidden">
@@ -82,8 +84,8 @@ const Products = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center">
-          <Button size="lg">
+        <div className="text-center animate-fade-in animate-delay-300">
+          <Button size="lg" className="hover-lift">
             Download Complete Catalogue
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
