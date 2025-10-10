@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/proplastics-logo.png";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,8 +21,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="#home" className="flex items-center">
-              <span className="text-2xl font-bold text-primary">Proplastics</span>
-              <span className="ml-2 text-sm font-medium text-muted-foreground hidden sm:block">Zimbabwe</span>
+              <img src={logo} alt="Proplastics Zimbabwe" className="h-10 sm:h-12" />
             </a>
           </div>
 
