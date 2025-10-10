@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,21 +15,44 @@ const Contact = () => {
     });
   };
 
-  const contactInfo = [
+  const locations = [
     {
-      icon: MapPin,
       title: "Head Office",
-      content: "Harare, Zimbabwe",
+      address: "5 Spurn Road, New Ardbennie, PO Causeway CY1199",
+      tel: "+263 242 621651-5",
+      fax: "+263 242 660535",
+      cell: ["+263 773 894561-2", "+263 773888923"],
+      whatsapp: "+263 787121723",
     },
     {
-      icon: Phone,
-      title: "Phone",
-      content: "+263 4 123 4567",
+      title: "Showground",
+      address: "Zimbabwe Agricultural Show, Stand No. 14, Main Gate, 1st Avenue",
+      tel: "+263 242751735",
     },
+    {
+      title: "Gweru Branch",
+      address: "1041 Coventry Road",
+      tel: "+263 54 2222277",
+    },
+    {
+      title: "Bulawayo Branch",
+      address: "Military Road (Off Khami Rd), P.O. Box RY115, Raylton",
+      tel: "+263 292 68396 / 62059",
+    },
+  ];
+
+  const quickContact = [
     {
       icon: Mail,
       title: "Email",
-      content: "info@proplastics.co.zw",
+      content: "sales@proplastics.co.zw",
+      href: "mailto:sales@proplastics.co.zw",
+    },
+    {
+      icon: MessageCircle,
+      title: "WhatsApp",
+      content: "+263 787121723",
+      href: "https://wa.me/263787121723",
     },
     {
       icon: Clock,
@@ -51,31 +74,70 @@ const Contact = () => {
           </p>
         </div>
 
+        {/* Quick Contact */}
+        <div className="grid sm:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
+          {quickContact.map((item, index) => (
+            <a
+              key={index}
+              href={item.href}
+              target={item.href ? "_blank" : undefined}
+              rel={item.href ? "noopener noreferrer" : undefined}
+              className={`flex gap-4 items-start p-6 bg-card rounded-xl border border-border ${
+                item.href ? "hover:border-primary transition-colors cursor-pointer" : ""
+              }`}
+            >
+              <div className="flex-shrink-0 h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <item.icon className="h-6 w-6 text-primary" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
+                <p className="text-sm text-muted-foreground">{item.content}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Information */}
+          {/* Locations */}
           <div>
-            <h3 className="text-2xl font-bold text-foreground mb-6">Contact Information</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-6">Our Locations</h3>
             <p className="text-muted-foreground mb-8">
-              Reach out to our team for product inquiries, technical support, or partnership opportunities.
+              Visit us at any of our branches across Zimbabwe for product inquiries and technical support.
             </p>
 
             <div className="space-y-6">
-              {contactInfo.map((item, index) => (
-                <div key={index} className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <item.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
-                    <p className="text-muted-foreground">{item.content}</p>
+              {locations.map((location, index) => (
+                <div key={index} className="p-6 bg-card rounded-xl border border-border">
+                  <div className="flex gap-3 items-start mb-3">
+                    <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-bold text-foreground mb-2">{location.title}</h4>
+                      <p className="text-sm text-muted-foreground mb-3">{location.address}</p>
+                      
+                      <div className="space-y-1 text-sm">
+                        <p className="text-foreground">
+                          <span className="font-medium">Tel:</span> {location.tel}
+                        </p>
+                        {location.fax && (
+                          <p className="text-foreground">
+                            <span className="font-medium">Fax:</span> {location.fax}
+                          </p>
+                        )}
+                        {location.cell && (
+                          <p className="text-foreground">
+                            <span className="font-medium">Cell:</span> {location.cell.join(", ")}
+                          </p>
+                        )}
+                        {location.whatsapp && (
+                          <p className="text-foreground">
+                            <span className="font-medium">WhatsApp:</span> {location.whatsapp}
+                          </p>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
-            </div>
-
-            {/* Map Placeholder */}
-            <div className="mt-8 h-64 bg-secondary rounded-xl border border-border flex items-center justify-center">
-              <MapPin className="h-12 w-12 text-muted-foreground" />
             </div>
           </div>
 
