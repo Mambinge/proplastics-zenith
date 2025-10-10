@@ -17,10 +17,10 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 15%;
 
-    /* Professional blue - trust, water, reliability */
-    --primary: 210 90% 48%;
+    /* Professional red - energy, passion, strength */
+    --primary: 0 85% 52%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 210 90% 42%;
+    --primary-hover: 0 85% 46%;
 
     /* Subtle gray for secondary actions */
     --secondary: 210 15% 96%;
@@ -38,12 +38,12 @@ All colors MUST be HSL.
 
     --border: 215 20% 88%;
     --input: 215 20% 88%;
-    --ring: 210 90% 48%;
+    --ring: 0 85% 52%;
 
     --radius: 0.625rem;
     
     /* Custom gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(210 90% 48%) 0%, hsl(210 85% 38%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0 85% 52%) 0%, hsl(0 80% 42%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 15% 98%) 100%);
     
     /* Shadows */
@@ -77,9 +77,9 @@ All colors MUST be HSL.
     --popover: 215 28% 12%;
     --popover-foreground: 210 20% 95%;
 
-    --primary: 210 90% 52%;
+    --primary: 0 85% 55%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 210 90% 48%;
+    --primary-hover: 0 85% 50%;
 
     --secondary: 215 25% 15%;
     --secondary-foreground: 210 20% 90%;
@@ -95,9 +95,9 @@ All colors MUST be HSL.
 
     --border: 215 25% 20%;
     --input: 215 25% 20%;
-    --ring: 210 90% 52%;
+    --ring: 0 85% 55%;
     
-    --gradient-hero: linear-gradient(135deg, hsl(210 85% 45%) 0%, hsl(210 80% 35%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0 80% 50%) 0%, hsl(0 75% 40%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(215 30% 8%) 0%, hsl(215 28% 12%) 100%);
     
     --shadow-soft: 0 4px 24px -2px hsl(0 0% 0% / 0.3);
