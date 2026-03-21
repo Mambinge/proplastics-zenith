@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/proplastics-logo.png";
+import React from 'react';
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,6 +12,7 @@ const Navigation = () => {
     { name: "About", href: "#about" },
     { name: "Products", href: "#products" },
     { name: "Sustainability", href: "#sustainability" },
+     { name: "Investor Center", href: "#sustainability" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -22,6 +24,12 @@ const Navigation = () => {
       setMobileMenuOpen(false);
     }
   };
+  interface NavItem {
+  title: string;
+  url: string;
+  subItems?: NavItem[]; // Optional sub-items for dropdown
+}
+
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border animate-slide-in-right">
@@ -47,7 +55,9 @@ const Navigation = () => {
               </a>
             ))}
             <Button size="sm" className="ml-4 hover-lift">Get Quote</Button>
+            <Button size="sm" className="ml-4 hover-lift">Shop Online</Button>
           </div>
+          
 
           {/* Mobile menu button */}
           <div className="md:hidden">

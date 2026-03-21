@@ -5,6 +5,8 @@ import Products from "@/components/Products";
 import Sustainability from "@/components/Sustainability";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Achievements from "@/components/achievements";
+import PropServices from "@/components/Services";
 
 const Index = () => {
   return (
@@ -12,10 +14,9 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
-        <About />
-        <Products />
+        <Achievements />
+        <PropServices />
         <Sustainability />
-        <Contact />
       </main>
       <Footer />
     </div>
