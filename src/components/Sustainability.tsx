@@ -18,6 +18,8 @@ const Sustainability = () => {
       title: "Energy Efficiency",
       description: "Solar-powered facilities and energy-efficient operations",
     },
+
+
     {
       icon: Leaf,
       title: "Sustainable Materials",
@@ -29,7 +31,7 @@ const Sustainability = () => {
     <section id="sustainability" className="py-24 bg-gradient-to-b from-secondary/20 to-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Image */}
+       
           <div className="relative rounded-2xl overflow-hidden shadow-2xl order-2 lg:order-1 animate-slide-in-left">
             <img
               src={sustainabilityImage}
@@ -56,7 +58,6 @@ const Sustainability = () => {
               entire value chain.
             </p>
 
-            {/* Initiatives */}
             <div className="space-y-6 mb-8">
               {initiatives.map((initiative, index) => (
                 <div key={index} className="flex gap-4">
