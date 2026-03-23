@@ -23,7 +23,6 @@ const Services = () => {
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Products", href: "#products" },
-    { name: "Sustainability", href: "#sustainability" },
      { name: "Investor Center", href: "#sustainability" },
     { name: "Contact", href: "#contact" },
   ];

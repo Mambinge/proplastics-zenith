@@ -5,9 +5,9 @@ const Footer = () => {
 
   const footerLinks = {
     company: [
-      { name: "About Us", href: "#about" },
-      { name: "Products", href: "#products" },
-      { name: "Sustainability", href: "#sustainability" },
+      { name: "About Us", href: "/#about" },
+      { name: "Products", href: "/#products" },
+      { name: "Investor Centre", href: "/investor-centre" },
       { name: "Careers", href: "#" },
     ],
     resources: [
@@ -17,7 +17,7 @@ const Footer = () => {
       { name: "News", href: "#" },
     ],
     support: [
-      { name: "Contact", href: "#contact" },
+      { name: "Contact", href: "/contact" },
       { name: "FAQ", href: "#" },
       { name: "Distributors", href: "#" },
       { name: "Warranty", href: "#" },
