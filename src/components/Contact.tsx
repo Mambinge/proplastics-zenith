@@ -103,7 +103,7 @@ const Contact = () => {
           {/* Map */}
           <div className="h-[400px] lg:h-full min-h-[400px] rounded-2xl overflow-hidden border border-border bg-muted shadow-lg animate-fade-in">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m1!1s-17.868128!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a4fd1488c93b%3A0xe7264a78c0e29202!2s5%20Spurn%20Rd%2C%20Harare!5e0!3m2!1sen!2szw!4v1711182400000!5m2!1sen!2szw"
+              src="https://maps.google.com/maps?q=Proplastics%20Limited,%205%20Spurn%20Rd,%20Ardbennie,%20Harare&t=&z=15&ie=UTF8&iwloc=&output=embed"
               className="w-full h-full border-0"
               allowFullScreen={true}
               loading="lazy"
