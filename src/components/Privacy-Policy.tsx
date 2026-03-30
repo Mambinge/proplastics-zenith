@@ -10,6 +10,7 @@ import Protankpic from "@/assets/ProtankDSC_0060.png";
 import cpvcpic from "@/assets/CPVCDSC_0074.png";
 import React from 'react';
 import { FloatingWhatsApp } from '@digicroz/react-floating-whatsapp'; //
+import { getWhatsAppUrl } from "@/components/WhatsAppButton";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/proplastics-logo.png";
@@ -59,7 +60,9 @@ const Services = () => {
                 {item.name}
               </a>
             ))}
-            <Button size="sm" className="ml-4 hover-lift">Get Quote</Button>
+            <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+              <Button size="sm" className="ml-4 hover-lift">Get Quote</Button>
+            </a>
             <Button size="sm" className="ml-4 hover-lift">Shop Online</Button>
           </div>
           
@@ -91,7 +94,9 @@ const Services = () => {
                   {item.name}
                 </a>
               ))}
-              <Button className="w-full hover-lift">Get Quote</Button>
+              <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+                <Button className="w-full hover-lift">Get Quote</Button>
+              </a>
             </div>
           </div>
         )}

@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/proplastics-logo.png";
 import { Link, useLocation } from "react-router-dom";
+import { getWhatsAppUrl } from "@/components/WhatsAppButton";
 import React from 'react';
 
 const Navigation = () => {
@@ -11,7 +12,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/#about" },
+    { name: "About", href: "/about" },
     { name: "Products", href: "/products" },
     { name: "Investor Center", href: "/investor-centre" },
     { name: "Contact", href: "/contact" },
@@ -70,7 +71,9 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button size="sm" className="ml-4 hover-lift">Get Quote</Button>
+            <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+              <Button size="sm" className="ml-4 hover-lift">Get Quote</Button>
+            </a>
             <Button size="sm" className="ml-4 hover-lift">Shop Online</Button>
           </div>
           
@@ -102,7 +105,9 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button className="w-full hover-lift">Get Quote</Button>
+              <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+                <Button className="w-full hover-lift">Get Quote</Button>
+              </a>
             </div>
           </div>
         )}

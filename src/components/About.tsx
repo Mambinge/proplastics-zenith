@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Building2, History, ShieldCheck, ArrowRight, Target, Eye, Gem } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
@@ -116,14 +117,16 @@ const About = () => {
 
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            About Proplastics
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Discover who we are, where we come from, and how we operate.
-          </p>
-        </div>
+        <ScrollReveal animation="reveal-up">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              About Proplastics
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Discover who we are, where we come from, and how we operate.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* The 3 Options - Interactive Tabs Layout */}
         <div className="max-w-6xl mx-auto">
@@ -132,38 +135,43 @@ const About = () => {
             {/* Sidebar / Tab Triggers */}
             <div className="lg:col-span-4 space-y-4">
               {options.map((option, index) => (
-                <button
-                  key={option.id}
-                  onClick={() => setActiveTab(index)}
-                  className={cn(
-                    "w-full text-left p-6 rounded-2xl border transition-all duration-300 group flex items-start gap-4 hover-lift",
-                    activeTab === index 
-                      ? "bg-card border-primary/50 shadow-lg shadow-primary/5 scale-[1.02]" 
-                      : "bg-background/40 border-border hover:bg-card hover:border-border/80"
-                  )}
+                <ScrollReveal 
+                  key={option.id} 
+                  animation="reveal-left" 
+                  delay={index * 100}
                 >
-                  <div className={cn(
-                    "p-3 rounded-xl flex-shrink-0 transition-colors duration-300",
-                    activeTab === index ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary group-hover:bg-primary/20"
-                  )}>
-                    <option.icon className="h-6 w-6" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className={cn(
-                      "text-xl font-bold transition-colors duration-300",
-                      activeTab === index ? "text-foreground" : "text-foreground/80 group-hover:text-foreground"
+                  <button
+                    onClick={() => setActiveTab(index)}
+                    className={cn(
+                      "w-full text-left p-6 rounded-2xl border transition-all duration-300 group flex items-start gap-4 hover-lift",
+                      activeTab === index 
+                        ? "bg-card border-primary/50 shadow-lg shadow-primary/5 scale-[1.02]" 
+                        : "bg-background/40 border-border hover:bg-card hover:border-border/80"
+                    )}
+                  >
+                    <div className={cn(
+                      "p-3 rounded-xl flex-shrink-0 transition-colors duration-300",
+                      activeTab === index ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary group-hover:bg-primary/20"
                     )}>
-                      {option.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-1 hidden sm:block">
-                      {option.subtitle}
-                    </p>
-                  </div>
-                  <ArrowRight className={cn(
-                    "h-5 w-5 shrink-0 self-center transition-all duration-300 opacity-0 -translate-x-4",
-                    activeTab === index && "opacity-100 translate-x-0 text-primary"
-                  )} />
-                </button>
+                      <option.icon className="h-6 w-6" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className={cn(
+                        "text-xl font-bold transition-colors duration-300",
+                        activeTab === index ? "text-foreground" : "text-foreground/80 group-hover:text-foreground"
+                      )}>
+                        {option.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-1 hidden sm:block">
+                        {option.subtitle}
+                      </p>
+                    </div>
+                    <ArrowRight className={cn(
+                      "h-5 w-5 shrink-0 self-center transition-all duration-300 opacity-0 -translate-x-4",
+                      activeTab === index && "opacity-100 translate-x-0 text-primary"
+                    )} />
+                  </button>
+                </ScrollReveal>
               ))}
             </div>
 

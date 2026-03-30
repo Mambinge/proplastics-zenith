@@ -4,6 +4,8 @@ import { FileText, Download, TrendingUp, Users, Bell, BarChart3, CircleDollarSig
 import { Button } from "@/components/ui/button";
 import HistoryTable from "@/components/HistoryTable";
 import { cn } from "@/lib/utils";
+import PageHero from "@/components/PageHero";
+import sustainabilityImage from "@/assets/INVESTORCENTERLANDING.jpg";
 
 const InvestorCentre = () => {
   const investorItems = [
@@ -46,24 +48,20 @@ const InvestorCentre = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       
-      <main className="pt-24 pb-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Hero Section */}
-          <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
-              Investor Centre
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
-              Proplastics Limited is listed on the Zimbabwe Stock Exchange under the symbol <span className="text-primary font-semibold">PROL.zw</span>. 
-              Get the latest investor information for Proplastics Limited, including top shareholders, financial summaries, 
-              stocks and annual reports here.
-            </p>
-            <div className="flex justify-center gap-4">
-              <Button size="lg" className="hover-lift">
-                Latest Annual Report <Download className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
+      <main className="pt-20 pb-16">
+        <PageHero
+          image={sustainabilityImage}
+          title="Investor Centre"
+          subtitle="Proplastics Limited is listed on the Zimbabwe Stock Exchange under the symbol PROL.zw. Get the latest investor information, financial summaries, stocks and annual reports here."
+        />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+          <div className="flex justify-center mb-16">
+            <Button size="lg" className="hover-lift">
+              Latest Annual Report <Download className="ml-2 h-4 w-4" />
+            </Button>
           </div>
+
 
           {/* Downloadables Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20 animate-slide-in-bottom">

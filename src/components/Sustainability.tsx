@@ -1,5 +1,6 @@
 import { Leaf, Recycle, Droplets, Sun } from "lucide-react";
 import sustainabilityImage from "@/assets/sustainability.jpg";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const Sustainability = () => {
   const initiatives = [
@@ -32,18 +33,21 @@ const Sustainability = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
        
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl order-2 lg:order-1 animate-slide-in-left">
-            <img
-              src={sustainabilityImage}
-              alt="Sustainable irrigation systems"
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-accent/30 to-transparent" />
-          </div>
+          <ScrollReveal animation="reveal-left" className="order-2 lg:order-1">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src={sustainabilityImage}
+                alt="Sustainable irrigation systems"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-accent/30 to-transparent" />
+            </div>
+          </ScrollReveal>
 
           {/* Content */}
-          <div className="order-1 lg:order-2 animate-slide-in-right">
-            <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <ScrollReveal animation="reveal-right" className="order-1 lg:order-2">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Leaf className="h-4 w-4" />
               Environmental Stewardship
             </div>
@@ -60,17 +64,23 @@ const Sustainability = () => {
 
             <div className="space-y-6 mb-8">
               {initiatives.map((initiative, index) => (
-                <div key={index} className="flex gap-4">
-                  <div className="flex-shrink-0 h-12 w-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                    <initiative.icon className="h-6 w-6 text-accent" />
+                <ScrollReveal 
+                  key={index} 
+                  animation="reveal-up" 
+                  delay={index * 100}
+                >
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0 h-12 w-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                      <initiative.icon className="h-6 w-6 text-accent" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-foreground mb-1">
+                        {initiative.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">{initiative.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-1">
-                      {initiative.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">{initiative.description}</p>
-                  </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
 
@@ -88,8 +98,9 @@ const Sustainability = () => {
                 <div className="text-2xl font-bold text-accent mb-1">100%</div>
                 <div className="text-xs text-muted-foreground">Recyclable</div>
               </div>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

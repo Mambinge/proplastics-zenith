@@ -15,9 +15,11 @@ import {
   Filter
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { getWhatsAppUrl } from "@/components/WhatsAppButton";
+import PageHero from "@/components/PageHero";
 
 // Import assets
-import pvcImage from "@/assets/products-pvc.jpg";
+import pvcImage from "@/assets/PRODUCT-RANGELANDING.jpg";
 import hdpeImage from "@/assets/products-hdpe.jpg";
 import protankImage from "@/assets/ProtankDSC_0060.JPG";
 import cpvcImage from "@/assets/CPVCDSC_0074.JPG";
@@ -109,20 +111,14 @@ const ProductsPage = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       
-      <main className="pt-24 pb-16">
-        {/* Hero Section */}
-        <section className="relative py-20 overflow-hidden bg-secondary/30">
-          <div className="absolute inset-0 bg-grid-white/5 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-          <div className="container relative mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
-              Product Solutions
-            </h1>
-            <p className="max-w-2xl mx-auto text-lg text-muted-foreground leading-relaxed">
-              Discover Proplastics' comprehensive range of piping systems and storage solutions, 
-              engineered to meet the highest international standards of durability and performance.
-            </p>
-          </div>
-        </section>
+      <main className="pt-20 pb-16">
+        {/* Page Header Banner */}
+        <PageHero 
+          image={pvcImage} 
+          title="Product Solutions"
+          subtitle="Discover Proplastics' comprehensive range of piping systems and storage solutions, engineered to meet the highest international standards."
+        />
+
 
         <div className="container mx-auto px-4 mt-12">
           {/* Controls */}
@@ -202,9 +198,11 @@ const ProductsPage = () => {
                   </div>
 
                   <div className="flex flex-wrap gap-4 pt-4">
-                    <Button className="hover-lift">
-                      Request Quote
-                    </Button>
+                    <a href={getWhatsAppUrl(`Hi, I'd like a quote for ${category.name}.`)} target="_blank" rel="noopener noreferrer">
+                      <Button className="hover-lift">
+                        Request Quote
+                      </Button>
+                    </a>
                     <Button variant="outline" className="hover-lift">
                       <Download className="mr-2 h-4 w-4" />
                       Download Technical Manual

@@ -6,7 +6,8 @@ import SAPPMA from "@/assets/certification-logos-2.png";
 import IFPA from "@/assets/certification-logos-3.png";
 import SAZ from "@/assets/certification-logos-4.png";
 import React from 'react';
-import { FloatingWhatsApp } from '@digicroz/react-floating-whatsapp'; //
+import { FloatingWhatsApp } from '@digicroz/react-floating-whatsapp';
+import ScrollReveal from "@/components/ScrollReveal";
 
 
 
@@ -19,34 +20,28 @@ const Achievement = () => {
 
       {/* Content */}
       <div className="container text-center mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="grid grid-cols-6 gap- mt-12 pt-12 border-t border-border text-center animate-fade-in animate-delay-400">
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">65+</div>
-              <div className="text-sm text-muted-foreground">Years Experience</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">4000+</div>
-              <div className="text-sm text-muted-foreground">Products Range</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">6+</div>
-              <div className="text-sm text-muted-foreground">African Countries</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">12 Years</div>
-              <div className="text-sm text-muted-foreground">Product Guarantee</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">2000+</div>
-              <div className="text-sm text-muted-foreground">Customers Served</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">AI </div>
-              <div className="text-sm text-muted-foreground">Production Machinery</div>
-            </div>
-            
-          </div>
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-12 pt-12 border-t border-border text-center">
+          {[
+            { value: "36+", label: "Years Experience" },
+            { value: "500+", label: "Product Range" },
+            { value: "6+", label: "African Countries" },
+            { value: "12 Years", label: "Product Guarantee" },
+            { value: "2000+", label: "Customers Served" },
+            { value: "Modern", label: "Production Machinery" },
+          ].map((stat, index) => (
+            <ScrollReveal 
+              key={index} 
+              animation="reveal-up" 
+              delay={index * 100}
+            >
+              <div className="hover-lift">
+                <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
           
       
     </section>
