@@ -10,7 +10,9 @@ const ContactPage = () => {
       <Navigation />
       <main className="pt-20 pb-16">
         <PageHero 
-          image={contactImg} 
+          image={contactImg}
+          title="Contact Us"
+          subtitle="We're here to help. Reach out to us for enquiries, support, or to learn more about our piping solutions."
         />
         <Contact />
       </main>

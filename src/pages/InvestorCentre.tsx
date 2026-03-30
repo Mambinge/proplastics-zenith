@@ -45,7 +45,7 @@ const InvestorCentre = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-[#05050a] text-slate-200">
       <Navigation />
       
       <main className="pt-20 pb-16">
@@ -57,7 +57,7 @@ const InvestorCentre = () => {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
           <div className="flex justify-center mb-16">
-            <Button size="lg" className="hover-lift">
+            <Button size="lg" className="hover-lift bg-emerald-600 hover:bg-emerald-500 text-white border-0">
               Latest Annual Report <Download className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -68,20 +68,20 @@ const InvestorCentre = () => {
             {investorItems.map((item, index) => (
               <div 
                 key={item.name} 
-                className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5"
+                className="group p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-emerald-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/10"
               >
-                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <item.icon className="h-6 w-6 text-primary" />
+                <div className="h-12 w-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <item.icon className="h-6 w-6 text-emerald-400" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2 flex items-center">
+                <h3 className="text-xl font-semibold mb-2 flex items-center text-white">
                   {item.name}
-                  <ExternalLink className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ExternalLink className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity text-emerald-400" />
                 </h3>
-                <p className="text-muted-foreground text-sm mb-6">
+                <p className="text-slate-400 text-sm mb-6">
                   {item.description}
                 </p>
-                <button className="text-primary text-sm font-medium flex items-center hover:underline">
-                  Click to download <Download className="ml-2 h-4 w-4" />
+                <button className="text-emerald-400 text-sm font-medium flex items-center hover:text-emerald-300 transition-colors">
+                  View Document <Download className="ml-2 h-4 w-4" />
                 </button>
               </div>
             ))}
@@ -94,7 +94,7 @@ const InvestorCentre = () => {
               columns={[
                 { header: "Year", accessor: "year" },
                 { header: "Type", accessor: "type" },
-                { header: "Amount", accessor: "amount", className: "font-semibold text-primary" },
+                { header: "Amount", accessor: "amount", className: "font-semibold text-emerald-400" },
                 { header: "Payment Date", accessor: "date" },
               ]}
               data={dividendData}
@@ -117,7 +117,7 @@ const InvestorCentre = () => {
               title="Shareholding Structure"
               columns={[
                 { header: "Shareholder Name", accessor: "name" },
-                { header: "Stake (%)", accessor: "stake", className: "font-semibold text-primary" },
+                { header: "Stake (%)", accessor: "stake", className: "font-semibold text-emerald-400" },
               ]}
               data={shareholderData}
               caption="Major shareholders as of recent disclosures."
@@ -147,19 +147,20 @@ const InvestorCentre = () => {
           </div>
 
           {/* Stock Info Summary Footer */}
-          <div className="p-8 rounded-3xl bg-secondary/30 border border-border animate-fade-in shadow-inner">
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center md:border-r border-border last:border-0">
-                <p className="text-sm text-muted-foreground uppercase tracking-wider mb-2">Symbol</p>
-                <p className="text-2xl font-bold text-primary">PROL.zw</p>
+          <div className="p-8 rounded-3xl bg-white/5 border border-white/10 animate-fade-in shadow-2xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-transparent pointer-events-none" />
+            <div className="grid md:grid-cols-3 gap-8 relative z-10">
+              <div className="text-center md:border-r border-white/10 last:border-0">
+                <p className="text-xs text-slate-400 uppercase tracking-widest mb-2 font-bold">Symbol</p>
+                <p className="text-3xl font-black text-emerald-400 tracking-tighter">PROL.zw</p>
               </div>
-              <div className="text-center md:border-r border-border last:border-0">
-                <p className="text-sm text-muted-foreground uppercase tracking-wider mb-2">Exchange</p>
-                <p className="text-2xl font-bold">Zimbabwe Stock Exchange</p>
+              <div className="text-center md:border-r border-white/10 last:border-0">
+                <p className="text-xs text-slate-400 uppercase tracking-widest mb-2 font-bold">Exchange</p>
+                <p className="text-xl font-bold text-white">Zimbabwe Stock Exchange</p>
               </div>
               <div className="text-center">
-                <p className="text-sm text-muted-foreground uppercase tracking-wider mb-2">Reporting Currency</p>
-                <p className="text-2xl font-bold">ZWG / USD</p>
+                <p className="text-xs text-slate-400 uppercase tracking-widest mb-2 font-bold">Reporting Currency</p>
+                <p className="text-xl font-bold text-white">ZWG / USD</p>
               </div>
             </div>
           </div>
