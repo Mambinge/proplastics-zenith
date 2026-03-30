@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/proplastics-logo.png";
 import { Link, useLocation } from "react-router-dom";
 import { getWhatsAppUrl } from "@/components/WhatsAppButton";
+import { cn } from "@/lib/utils";
 import React from 'react';
 
 const Navigation = () => {

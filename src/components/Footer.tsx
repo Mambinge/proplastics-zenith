@@ -1,4 +1,6 @@
 import { Facebook, Twitter, Linkedin, Mail } from "lucide-react";
+import { useLocation } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -43,7 +45,7 @@ const Footer = () => {
               <span className="ml-2 text-sm font-medium text-muted-foreground">Zimbabwe</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md">
-              Leading manufacturer of quality plastic pipe systems for water, irrigation, 
+              Leading manufacturer of quality plastic pipe systems for water, irrigation,
               mining, and construction across Southern Africa.
             </p>
             <div className="flex gap-4">

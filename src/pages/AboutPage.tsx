@@ -87,34 +87,52 @@ const timelineEvents = [
 // ===========================
 const boardMembers = [
   {
-    name: "W. Gillat",
-    role: "Non-Executive Chairman",
-    description:
-      "Provides strategic direction and oversight. Ensures the Board fulfills its governance responsibilities in line with King IV principles.",
+    name: "Mr. Gregory Sebborn",
+    role: "Non-Executive Board Chairman",
+    image: "https://www.proplastics.co.zw/images/chairman.JPG",
+    bio: "Gregory served as Managing Director of the Zimbabwe and Southern African operations of the Rennies Group of Companies. He is also a founding Director and former Group Managing Director of Zimplats Holdings Limited and Managing Director of Zimbabwe Platinum Mines. He served as a Partner at Renaissance Partners, a Russian based Investment Bank. Gregory is currently a consultant for special mining projects and developments in Africa and serves as a non-executive Director of several companies including Stanbic Bank Zimbabwe.",
   },
   {
-    name: "M. Sobahle",
-    role: "Managing Director",
-    description:
-      "Leads executive management and daily operations, driving the company's strategic vision and growth objectives.",
-  },
-  {
-    name: "R. Memory",
-    role: "Finance Director",
-    description:
-      "Oversees financial strategy, reporting, and risk management, ensuring fiscal integrity and stakeholder value creation.",
-  },
-  {
-    name: "T. Nyandoro",
+    name: "Mr. Herbert S. Mashanyare",
     role: "Non-Executive Director",
-    description:
-      "Brings independent insight and experience to board deliberations and committee functions.",
+    image: "https://www.proplastics.co.zw/images/h.mashanyare.jpg",
+    bio: "Herbert is a former mining executive and until recently was an Executive Director for Mimosa Mines in Zimbabwe. Prior to that, Herbert held several senior positions with Union Carbide and Zimasco. Herbert holds a Bachelor of Science in Chemistry and a Masters of Philosophy in Process Research from the University of Zimbabwe. He also holds a Master of Science in Process Engineering Design from the University of London.",
   },
   {
-    name: "P. Myambo",
+    name: "Mrs. Sandra Roberts",
     role: "Non-Executive Director",
-    description:
-      "Contributes governance expertise and serves on key board sub-committees.",
+    image: "https://www.proplastics.co.zw/images/Sandra_Roberts.jpg",
+    bio: "Sandra is a proven Agribusiness Specialist and Project Manager with over twenty years of experience in commercial crop production, donor funded agricultural initiatives and horticultural research. Sandra holds a Master of Science Agriculture (Horticulture) (Cum Laude) and a Bachelor of Science Agriculture (Horticulture) Cum Laude, Dux student from the University of Natal, Pietermariztburg, South Africa. In addition, Sandra holds multiple memberships in international and regional agricultural and investment associations.",
+  },
+  {
+    name: "Mr. Paddy Tongai Zhanda (Jnr)",
+    role: "Non-Executive Director",
+    image: "https://www.proplastics.co.zw/images/Paddy_Zhanda.jpg",
+    bio: "Paddy holds a Bachelor of Commerce in Accounting Science from the University of South Africa and completed his Articles of Clerkship with Deloitte & Touche. Paddy is a Director of a number of companies including Aurora Agricultural Ventures & Processors (Private) Limited.",
+  },
+  {
+    name: "Mr. Canada Malunga",
+    role: "Non-Executive Director",
+    image: "https://www.proplastics.co.zw/images/Canada_Malunga.jpg",
+    bio: "Canada holds Master’s in Business Administration (Manchester) and Bachelor of Laws (UNISA) degrees and is a Chartered Accountant (Zimbabwe). He is the immediate former Chief Executive Officer at Masimba Holdings Limited, the leading construction Company in Zimbabwe. He is the past President of the Institute of Chartered Accountants of Zimbabwe and is a Non-Executive Director at FBC Holdings Limited. Canada previously served as Managing Director at Proplastics Limited.",
+  },
+  {
+    name: "Mr. Paschal Changunda",
+    role: "Chief Executive Officer",
+    image: "https://www.proplastics.co.zw/images/Paschal_Changunda.jpg",
+    bio: "Paschal is a qualified Chartered Accountant (Zimbabwe) and is a holder of a Masters Degree in Business Leadership (MBL) from the University of South Africa (UNISA). He served his articles with Deloitte & Touche. Paschal has previously worked for Cairns Foods where he was Finance Manager, and Rainbow Tourism Group, where he joined as Finance Manager and became Finance Director in 2004 until 2013. Prior to joining Proplastics, he was Director – Finance & Administration with ZimTrade.",
+  },
+  {
+    name: "Mr. Benny Tichaona Deda",
+    role: "Non-Executive Director",
+    image: "https://www.proplastics.co.zw/images/Benny_Deda.jpg",
+    bio: "Benny is a holder of an MBA from Edinburgh Heriot Watt Business School (UK). He is also a qualified Chartered Management Accountant (CIMA) (UK), Certified Public Accountant (CPA) (Kenya) and Chartered Secretary (CIS) (Zimbabwe). He sits on several Boards in health care provision, financial services and education sectors. Currently in semi-retirement, Benny previously was the Chief Executive Officer of Baines Imaging Group and the Avenues Clinic.",
+  },
+  {
+    name: "Mrs. Thembiwe Chikosi Mazingi",
+    role: "Non-Executive Director",
+    image: "https://www.proplastics.co.zw/images/Thembiwe_Mazingi.JPG",
+    bio: "Thembiwe holds a Master's in Business Administration and a Bachelor of Laws degree from the University of Zimbabwe. She is a registered Legal Practitioner and Managing Partner at Coghlan, Welsh & Guest. She is a Non-Executive Director at Axia Corporation Limited, Ariston Holdings, and African Century Limited.",
   },
 ];
 
@@ -411,32 +429,41 @@ const AboutPage = () => {
                   Our board provides strategic direction and oversight, ensuring the highest
                   standards of governance and accountability.
                 </p>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {boardMembers.map((member) => (
                     <div
                       key={member.name}
-                      className="relative bg-card p-6 rounded-2xl border border-border hover:border-primary/40 transition-all duration-300 group overflow-hidden"
+                      className="group relative bg-card rounded-2xl border border-border hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-2xl"
                     >
-                      {/* Accent bar */}
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg shrink-0">
-                          {member.name
-                            .split(" ")
-                            .map((n) => n[0])
-                            .join("")}
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-foreground">{member.name}</h4>
-                          <p className="text-xs text-primary font-semibold uppercase tracking-wider">
+                      {/* Portrait Image */}
+                      <div className="relative h-64 overflow-hidden bg-slate-100">
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                        
+                        <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform">
+                          <h4 className="font-bold text-white text-lg leading-tight">{member.name}</h4>
+                          <p className="text-emerald-400 text-[10px] font-bold uppercase tracking-widest mt-1">
                             {member.role}
                           </p>
                         </div>
                       </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {member.description}
-                      </p>
+
+                      {/* Bio Content - Scrollable on hover or fixed height */}
+                      <div className="p-4 bg-card/80 backdrop-blur-sm border-t border-border/50">
+                        <div className="max-h-32 overflow-y-auto pr-2 custom-scrollbar">
+                          <p className="text-xs text-muted-foreground leading-relaxed italic">
+                            {member.bio}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Accent highlight */}
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                     </div>
                   ))}
                 </div>
