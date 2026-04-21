@@ -1,6 +1,7 @@
 import { Facebook, Twitter, Linkedin, Mail } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/proplastics-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,19 +11,18 @@ const Footer = () => {
       { name: "About Us", href: "/about" },
       { name: "Products", href: "/#products" },
       { name: "Investor Centre", href: "/investor-centre" },
-      { name: "Careers", href: "#" },
     ],
-    resources: [
-      { name: "Technical Docs", href: "#" },
-      { name: "Catalogues", href: "#" },
-      { name: "Case Studies", href: "#" },
-      { name: "News", href: "#" },
-    ],
+    // resources: [
+    //   { name: "Technical Docs", href: "#" },
+    //   { name: "Catalogues", href: "#" },
+    //   { name: "Case Studies", href: "#" },
+    //   { name: "News", href: "#" },
+    // ],
     support: [
       { name: "Contact", href: "/contact" },
       { name: "FAQ", href: "#" },
-      { name: "Distributors", href: "#" },
-      { name: "Warranty", href: "#" },
+      // { name: "Distributors", href: "#" },
+      // { name: "Warranty", href: "#" },
     ],
   };
 
@@ -40,9 +40,10 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <div className="mb-4">
-              <span className="text-2xl font-bold text-primary">Proplastics</span>
-              <span className="ml-2 text-sm font-medium text-muted-foreground">Zimbabwe</span>
+            <div className="mb-6">
+              <Link to="/" className="flex items-center">
+                <img src={logo} alt="Proplastics Logo" className="h-10 hover:scale-105 transition-transform duration-300" />
+              </Link>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md">
               Leading manufacturer of quality plastic pipe systems for water, irrigation,
@@ -64,22 +65,22 @@ const Footer = () => {
 
           {/* Links Columns */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Company</h3>
+            <h3 className="font-bold text-foreground mb-4 uppercase text-xs tracking-widest text-primary">Company</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  <Link
+                    to={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
+          {/* <div>
             <h3 className="font-semibold text-foreground mb-4">Resources</h3>
             <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
@@ -93,19 +94,19 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Support</h3>
+            <h3 className="font-bold text-foreground mb-4 uppercase text-xs tracking-widest text-primary">Support</h3>
             <ul className="space-y-3">
               {footerLinks.support.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  <Link
+                    to={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -119,9 +120,9 @@ const Footer = () => {
               © {currentYear} Proplastics Zimbabwe Limited. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link to="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Privacy Policy
-              </a>
+              </Link>
               <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Terms of Service
               </a>

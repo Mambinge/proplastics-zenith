@@ -217,6 +217,7 @@ const ProductsPage = () => {
                   <img 
                     src={category.image} 
                     alt={category.name}
+                    loading="lazy"
                     className="w-full h-full object-cover aspect-video lg:aspect-square group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

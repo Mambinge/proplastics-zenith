@@ -1,129 +1,83 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import ProFlow from "@/assets/proFlo-logos-2026-1.png";
-import ProDrain from "@/assets/proDrain-logos-1.png";
-import CPVC from "@/assets/cpvc-logo-2026.png";
-import ProTank from "@/assets/protank-Logos-2026-1.png";
-import Proflowpic from "@/assets/ProfowDSC_0216.jpg";
-import ProDrainPic from "@/assets/ProDrainDSC_0316.png";
-import Protankpic from "@/assets/ProtankDSC_0060.png";
-import cpvcpic from "@/assets/CPVCDSC_0074.png";
-import React from 'react';
-import { FloatingWhatsApp } from '@digicroz/react-floating-whatsapp'; //
-import { getWhatsAppUrl } from "@/components/WhatsAppButton";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import logo from "@/assets/proplastics-logo.png";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
+import heroImg from "@/assets/hero-industrial.jpg";
+import { Shield, Lock, Eye, FileText, Scale } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
-
-
-const Services = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Products", href: "#products" },
-     { name: "Investor Center", href: "#sustainability" },
-    { name: "Contact", href: "#contact" },
+const PrivacyPolicy = () => {
+  const sections = [
+    {
+      icon: Shield,
+      title: "Data Protection",
+      content: "Proplastics Zimbabwe is committed to protecting your personal data and ensuring transparency in how we collect, use, and share your information. We implement robust security measures to safeguard your privacy."
+    },
+    {
+      icon: Lock,
+      title: "Information Security",
+      content: "Our systems are designed with security in mind. We use industry-standard encryption and access controls to prevent unauthorized access to our corporate data and customer records."
+    },
+    {
+      icon: Eye,
+      title: "Usage Transparency",
+      content: "We only collect data necessary for providing our products and services. This include contact details for processing enquiries and service performance data for system optimization."
+    },
+    {
+      icon: Scale,
+      title: "Legal Compliance",
+      content: "Proplastics strictly adheres to the Cyber and Data Protection Act [Chapter 12:07] of Zimbabwe and other regional data protection regulations."
+    },
+    {
+      icon: FileText,
+      title: "Contact Us",
+      content: "If you have any questions regarding our privacy practices, please contact our Data Protection Officer at info@proplastics.co.zw."
+    }
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setMobileMenuOpen(false);
-    }
-  };
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border animate-slide-in-right">
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <a href="#home" onClick={(e) => handleNavClick(e, "#home")} className="flex items-center">
-              <img src={logo} alt="Proplastics Zimbabwe" className="h-10 sm:h-12 hover:scale-105 transition-transform duration-300" />
-            </a>
-          </div>
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      
+      <main className="pt-20 pb-16">
+        <PageHero 
+          image={heroImg} 
+          title="Privacy Policy" 
+          subtitle="How we manage and protect your data at Proplastics Zimbabwe."
+        />
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="text-foreground hover:text-primary transition-all duration-300 font-medium text-sm relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {item.name}
-              </a>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16 max-w-4xl">
+          <div className="space-y-12">
+            {sections.map((section, index) => (
+              <ScrollReveal key={index} animation="reveal-up" delay={index * 100}>
+                <div className="flex gap-6 p-8 bg-card border border-border rounded-3xl hover:shadow-xl transition-all duration-300 group">
+                  <div className="h-14 w-14 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-500">
+                    <section.icon className="h-7 w-7 text-primary group-hover:text-white transition-colors duration-500" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground mb-3">{section.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {section.content}
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
             ))}
-            <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
-              <Button size="sm" className="ml-4 hover-lift">Get Quote</Button>
-            </a>
-            <Button size="sm" className="ml-4 hover-lift">Shop Online</Button>
           </div>
-          
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors font-medium"
-                  onClick={(e) => handleNavClick(e, item.href)}
-                >
-                  {item.name}
-                </a>
-              ))}
-              <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
-                <Button className="w-full hover-lift">Get Quote</Button>
-              </a>
+          <ScrollReveal animation="reveal-up" delay={600}>
+            <div className="mt-16 p-8 bg-secondary/30 rounded-3xl border border-border text-center">
+              <p className="text-sm text-muted-foreground">
+                Last updated: March 2026. Proplastics reserves the right to update this policy periodically. 
+                Continued use of our services constitutes acceptance of any changes.
+              </p>
             </div>
-          </div>
-        )}
-      </nav>
-      <div id="achievement" className="py-24 bg-gradient-to-b from-background to-secondary/20">
-      {/* Background Image with Overlay */}
-      
+          </ScrollReveal>
+        </div>
+      </main>
 
-      {/* Content */}
-<div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in animate-delay-600">
-       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight animate-fade-in animate-delay-100">
-            Privacy Policy
-            
-            
-          </h1></div>
-
-     
-      
+      <Footer />
     </div>
-    </header>
-    
   );
- 
-    
-    
-  
 };
 
-
-export default Services;
+export default PrivacyPolicy;

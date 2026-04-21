@@ -101,6 +101,7 @@ const Products = () => {
                   <img
                     src={solution.image}
                     alt={solution.name}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
@@ -144,14 +145,16 @@ const Products = () => {
       </div>
 
       <div className="container mx-auto px-4 mt-16">
-        <div className="p-8 rounded-2xl bg-primary text-primary-foreground text-center relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
-          <h3 className="text-2xl font-bold mb-4 relative z-10">Need a Custom Solution?</h3>
-          <p className="mb-6 opacity-90 relative z-10 max-w-2xl mx-auto">
+        <div className="p-10 rounded-3xl bg-slate-900 text-white text-center relative overflow-hidden shadow-2xl border border-white/5">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
+          
+          <h3 className="text-3xl font-bold mb-4 relative z-10">Need a <span className="text-primary">Custom Solution?</span></h3>
+          <p className="text-slate-300 mb-8 relative z-10 max-w-2xl mx-auto text-lg">
             Our technical team can help you design and select the perfect piping system for your specific project requirements.
           </p>
           <Link to="/contact">
-            <Button variant="secondary" size="lg" className="relative z-10 hover-lift">
+            <Button size="lg" className="relative z-10 hover-lift h-14 px-10 font-bold uppercase tracking-wider">
               Talk to an Expert
             </Button>
           </Link>

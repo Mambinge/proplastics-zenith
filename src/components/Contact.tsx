@@ -1,18 +1,73 @@
-import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
+import { useState } from "react";
+import { MapPin, Phone, Mail, Clock, MessageCircle, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isSending, setIsSending] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
+    setIsSending(true);
+
+    try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("EmailJS configuration is missing. Please check your .env file.");
+      }
+
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        to_name: "Proplastics Sales", // Optional: Default recipient name
+        company: formData.company,
+        message: formData.message,
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you within 24 hours.",
+      });
+
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast({
+        title: "Error Sending Message",
+        description: "Please try again later or contact us directly via phone.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const locations = [
@@ -46,13 +101,11 @@ const Contact = () => {
       icon: Mail,
       title: "Email",
       content: "sales@proplastics.co.zw",
-      href: "mailto:sales@proplastics.co.zw",
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
       content: "+263 787121723",
-      href: "https://wa.me/263787121723",
     },
     {
       icon: Clock,
@@ -64,28 +117,14 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Contact Us
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Proplastics Head Office and manufacturing facilities are located in Ardbennie, Harare. 
-            Please find a list of all our branches below:
-          </p>
-        </div>
 
         {/* Quick Contact */}
         <div className="grid sm:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
           {quickContact.map((item, index) => (
             <a
               key={index}
-              href={item.href}
-              target={item.href ? "_blank" : undefined}
-              rel={item.href ? "noopener noreferrer" : undefined}
-              className={`flex gap-4 items-start p-6 bg-card rounded-xl border border-border shadow-sm ${
-                item.href ? "hover:border-primary hover:shadow-md transition-all cursor-pointer" : ""
-              }`}
+              className={`flex gap-4 items-start p-6 bg-card rounded-xl border border-border shadow-sm 
+             `}
             >
               <div className="flex-shrink-0 h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center">
                 <item.icon className="h-6 w-6 text-primary" />
@@ -187,13 +226,27 @@ const Contact = () => {
                   <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
                     First Name *
                   </label>
-                  <Input id="firstName" required placeholder="John" className="bg-background/50" />
+                  <Input 
+                    id="firstName" 
+                    required 
+                    placeholder="John" 
+                    className="bg-background/50"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div>
                   <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
                     Last Name *
                   </label>
-                  <Input id="lastName" required placeholder="Doe" className="bg-background/50" />
+                  <Input 
+                    id="lastName" 
+                    required 
+                    placeholder="Doe" 
+                    className="bg-background/50"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
 
@@ -202,13 +255,27 @@ const Contact = () => {
                   <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                     Email *
                   </label>
-                  <Input id="email" type="email" required placeholder="john@example.com" className="bg-background/50" />
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    required 
+                    placeholder="john@example.com" 
+                    className="bg-background/50"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
                     Company
                   </label>
-                  <Input id="company" placeholder="Your Company" className="bg-background/50" />
+                  <Input 
+                    id="company" 
+                    placeholder="Your Company" 
+                    className="bg-background/50"
+                    value={formData.company}
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
 
@@ -222,11 +289,28 @@ const Contact = () => {
                   placeholder="Tell us about your requirements..."
                   rows={6}
                   className="bg-background/50 resize-none"
+                  value={formData.message}
+                  onChange={handleChange}
                 />
               </div>
 
-              <Button type="submit" size="lg" className="w-full sm:w-auto px-12 hover-lift">
-                Send Message
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full sm:w-auto px-12 hover-lift"
+                disabled={isSending}
+              >
+                {isSending ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-4 w-4" />
+                    Send Message
+                  </>
+                )}
               </Button>
             </form>
           </div>

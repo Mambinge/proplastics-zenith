@@ -8,7 +8,7 @@ import SAZ from "@/assets/certification-logos-4.png";
 import Aniversary from "@/assets/Mark-Proplastics-2026.png";
 import React from 'react';
 import { FloatingWhatsApp } from '@digicroz/react-floating-whatsapp'; //
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Privacy from "@/components/Privacy-Policy";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -19,13 +19,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const Hero = () => {
    const navigate = useNavigate(); // Initialize the hook
-   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    // Optional: Prevent default form submission behavior if the button is in a form
-    event.preventDefault(); 
-    
-    // Navigate to a specific route defined in your router configuration
-     navigate('/Privacy-Policy')
-  };
 
  
   return (
@@ -89,26 +82,30 @@ const Hero = () => {
           {/* CTA Buttons */}
           <ScrollReveal animation="reveal-up" delay={300} threshold={0}>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="group hover-lift">
-                Explore Products
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button onClick={handleButtonClick} id="root" size="lg" variant="outline" className="hover-lift">
-                Privacy Policy
-              </Button>
+              <Link to="/products">
+                <Button size="lg" className="group hover-lift w-full sm:w-auto h-14 px-8 text-base font-bold uppercase tracking-wider">
+                  Explore Products
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button size="lg" variant="outline" className="hover-lift w-full sm:w-auto h-14 px-8 text-base font-bold uppercase tracking-wider border-primary text-primary hover:bg-primary hover:text-white">
+                  Get a Quote
+                </Button>
+              </Link>
             </div>
           </ScrollReveal>
           
 
-          {/* Stats */}
+          {/* Certification Logos */}
           <ScrollReveal animation="reveal-up" delay={400} threshold={0}>
-            <div className="grid grid-cols-5 gap-8 mt-12 pt-12 border-t border-border">
+            <div className="flex flex-wrap items-center gap-8 md:gap-12 mt-12 pt-12 border-t border-border">
               {[SABS, SAPPMA, IFPA, SAZ, Aniversary].map((logo, index) => (
-                <div key={index} className="flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                <div key={index} className="flex flex-1 items-center justify-center grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 hover:scale-110">
                   <img
                     src={logo}
                     alt="Certification Logo"
-                    className="max-h-12 object-contain"
+                    className="max-h-12 w-auto object-contain"
                   />
                 </div>
               ))}

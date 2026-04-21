@@ -23,34 +23,77 @@ const Services = () => {
       {/* Content */}
       <div className="max-w-3xl mx-auto text-center mb-16">
         <ScrollReveal animation="reveal-up">
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Services Category
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Premium Product <span className="text-primary">Brands</span>
           </h1>
         </ScrollReveal>
       </div>
-      <div className="container text-center mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 pt-12 border-t border-border">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
-            { img: ProFlow, pic: Proflowpic },
-            { img: ProDrain, pic: ProDrainPic },
-            { img: ProTank, pic: Protankpic },
-            { img: CPVC, pic: cpvcpic },
+            { 
+              img: ProFlow, 
+              pic: Proflowpic, 
+              title: "ProFlow Systems",
+              description: "Advanced pressure pipe systems for water distribution and irrigation."
+            },
+            { 
+              img: ProDrain, 
+              pic: ProDrainPic,
+              title: "ProDrain Solutions",
+              description: "High-performance drainage and sewerage piping for infrastructure projects."
+            },
+            { 
+              img: ProTank, 
+              pic: Protankpic,
+              title: "ProTank Storage",
+              description: "Durable, food-grade water storage tanks for domestic and industrial use."
+            },
+            { 
+              img: CPVC, 
+              pic: cpvcpic,
+              title: "FlowGuard cPVC",
+              description: "Premium hot and cold water plumbing solutions for modern buildings."
+            },
           ].map((item, index) => (
-            <React.Fragment key={index}>
-              <ScrollReveal animation="reveal-up" delay={index * 100}>
-                <div className="h-16 flex items-center justify-center p-2 mb-4 grayscale hover:grayscale-0 transition-all duration-300">
-                  <img src={item.img} alt="Service Logo" className="max-h-full object-contain" />
+            <ScrollReveal 
+              key={index} 
+              animation="reveal-up" 
+              delay={index * 150}
+              className="group"
+            >
+              <div className="bg-card rounded-3xl overflow-hidden border border-border shadow-md hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+                {/* Logo Area */}
+                <div className="p-8 pb-4 flex flex-col items-center">
+                  <div className="h-28 w-full flex items-center justify-center p-2 mb-4 transition-transform duration-500 group-hover:scale-110">
+                    <img 
+                      src={item.img} 
+                      alt={`${item.title} Logo`} 
+                      loading="lazy" 
+                      className="max-h-full max-w-full object-contain" 
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground text-center">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground text-center mt-2 line-clamp-2">
+                    {item.description}
+                  </p>
                 </div>
-              </ScrollReveal>
-              <ScrollReveal animation="reveal-scale" delay={index * 150 + 200}>
-                <div className="aspect-square rounded-2xl overflow-hidden border border-border shadow-lg group">
-                  <img src={item.pic} alt="Service Visual" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+
+                {/* Visual Area */}
+                <div className="mt-auto aspect-[4/3] relative overflow-hidden border-t border-border">
+                  <img 
+                    src={item.pic} 
+                    alt={item.title} 
+                    loading="lazy" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-              </ScrollReveal>
-            </React.Fragment>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
-          </div>
+      </div>
       
     </section>
     

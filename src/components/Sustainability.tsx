@@ -29,79 +29,76 @@ const Sustainability = () => {
   ];
 
   return (
-    <section id="sustainability" className="py-24 bg-gradient-to-b from-secondary/20 to-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-       
-          <ScrollReveal animation="reveal-left" className="order-2 lg:order-1">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src={sustainabilityImage}
-                alt="Sustainable irrigation systems"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-accent/30 to-transparent" />
+    <section id="sustainability" className="py-24 bg-card relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl opacity-50" />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-4xl mx-auto text-center mb-16 space-y-6">
+          <ScrollReveal animation="reveal-up">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-2">
+              <Leaf className="h-4 w-4" />
+              Environmental Strategy
             </div>
           </ScrollReveal>
 
-          {/* Content */}
-          <ScrollReveal animation="reveal-right" className="order-1 lg:order-2">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Leaf className="h-4 w-4" />
-              Environmental Stewardship
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-              Committed to Sustainability
+          <ScrollReveal animation="reveal-up" delay={100}>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+              Driving <span className="text-primary">Sustainable</span> Infrastructure
             </h2>
+          </ScrollReveal>
 
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              At Proplastics Zimbabwe, we recognize our responsibility to protect the environment 
-              while delivering quality products. Our sustainability initiatives span across our 
-              entire value chain.
+          <ScrollReveal animation="reveal-up" delay={200}>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              At Proplastics, sustainability is woven into our manufacturing excellence. 
+              We focus on creating piping systems that last generations while 
+              minimizing our environmental footprint today.
             </p>
-
-            <div className="space-y-6 mb-8">
-              {initiatives.map((initiative, index) => (
-                <ScrollReveal 
-                  key={index} 
-                  animation="reveal-up" 
-                  delay={index * 100}
-                >
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 h-12 w-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                      <initiative.icon className="h-6 w-6 text-accent" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-foreground mb-1">
-                        {initiative.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">{initiative.description}</p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
-              <div>
-                <div className="text-2xl font-bold text-accent mb-1">30%</div>
-                <div className="text-xs text-muted-foreground">Recycled Content</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-accent mb-1">50+</div>
-                <div className="text-xs text-muted-foreground">Years Lifespan</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-accent mb-1">100%</div>
-                <div className="text-xs text-muted-foreground">Recyclable</div>
-              </div>
-              </div>
-            </div>
           </ScrollReveal>
         </div>
+
+        {/* Initiatives Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {initiatives.map((initiative, index) => (
+            <ScrollReveal 
+              key={index} 
+              animation="reveal-up" 
+              delay={index * 100 + 300}
+            >
+              <div className="p-8 bg-secondary/30 rounded-3xl border border-transparent hover:border-primary/20 transition-all duration-300 group h-full flex flex-col items-center text-center">
+                <div className="h-14 w-14 bg-background rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <initiative.icon className="h-7 w-7 text-green-600 group-hover:text-current font-bold" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  {initiative.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {initiative.description}
+                </p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        {/* Stats Grid */}
+        <ScrollReveal animation="reveal-up" delay={700}>
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 p-10 bg-primary/5 rounded-[2.5rem] border border-primary/10 text-center">
+            <div className="space-y-1">
+              <div className="text-5xl font-black text-primary">30%</div>
+              <div className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">Recycled Content</div>
+            </div>
+            <div className="space-y-1 border-y md:border-y-0 md:border-x border-primary/10 py-6 md:py-0">
+              <div className="text-5xl font-black text-primary">50+</div>
+              <div className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">Year Lifespan</div>
+            </div>
+            <div className="space-y-1">
+              <div className="text-5xl font-black text-primary">100%</div>
+              <div className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">Recyclable</div>
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

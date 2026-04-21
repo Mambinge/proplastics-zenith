@@ -247,6 +247,7 @@ const AboutPage = () => {
                   <img
                     src={heroImg}
                     alt="Proplastics manufacturing facility"
+                    loading="lazy"
                     className="w-full h-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
@@ -351,6 +352,7 @@ const AboutPage = () => {
                               <img
                                 src={event.image}
                                 alt={event.title}
+                                loading="lazy"
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

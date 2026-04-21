@@ -9,7 +9,18 @@ import React from 'react';
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const location = useLocation();
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const currentScroll = window.scrollY;
+      setScrollProgress((currentScroll / totalScroll) * 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -47,6 +58,11 @@ const Navigation = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border animate-slide-in-right">
+      {/* Scroll Progress Bar */}
+      <div 
+        className="absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-150 z-50" 
+        style={{ width: `${scrollProgress}%` }}
+      />
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -62,20 +78,28 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="text-foreground hover:text-primary transition-all duration-300 font-medium text-sm relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.href;
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className={cn(
+                    "transition-all duration-300 font-bold text-[11px] uppercase tracking-widest relative py-1 mb-[-1px]",
+                    isActive 
+                      ? "text-primary after:w-[60%] after:mx-auto after:absolute after:bottom-0 after:left-[20%] after:h-[1.5px] after:bg-primary" 
+                      : "text-foreground/70 hover:text-primary after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-[60%] hover:after:left-[20%]"
+                  )}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
             <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
-              <Button size="sm" className="ml-4 hover-lift">Get Quote</Button>
+              <Button variant="secondary" size="sm" className="ml-4 hover-lift font-bold uppercase tracking-tighter bg-slate-900 text-white hover:bg-slate-800 border-0">Get Quote</Button>
             </a>
-            <Button size="sm" className="ml-4 hover-lift">Shop Online</Button>
+            <Button variant="outline" size="sm" className="ml-3 hover-lift border-primary text-primary hover:bg-primary hover:text-white font-bold uppercase tracking-tighter">Shop Online</Button>
           </div>
           
 
