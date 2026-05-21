@@ -86,7 +86,7 @@ const Navigation = () => {
                   to={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={cn(
-                    "transition-all duration-300 font-bold text-[11px] uppercase tracking-widest relative py-1 mb-[-1px]",
+                    "transition-all duration-300 font-semibold text-xs uppercase tracking-wide relative py-1 mb-[-1px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm",
                     isActive 
                       ? "text-primary after:w-[60%] after:mx-auto after:absolute after:bottom-0 after:left-[20%] after:h-[1.5px] after:bg-primary" 
                       : "text-foreground/70 hover:text-primary after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 hover:after:w-[60%] hover:after:left-[20%]"
@@ -110,6 +110,8 @@ const Navigation = () => {
               size="icon"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation-menu"
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -118,18 +120,26 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
+          <div id="mobile-navigation-menu" className="md:hidden py-4 border-t border-border animate-fade-in">
             <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="text-foreground hover:text-primary transition-colors font-medium"
-                  onClick={(e) => handleNavClick(e, item.href)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const isActive = location.pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={cn(
+                      "px-3 py-2 rounded-lg transition-colors font-medium",
+                      isActive
+                        ? "bg-primary/10 text-primary"
+                        : "text-foreground hover:text-primary hover:bg-primary/5"
+                    )}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
               <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
                 <Button className="w-full hover-lift">Get Quote</Button>
               </a>

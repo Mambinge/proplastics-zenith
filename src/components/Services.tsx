@@ -1,5 +1,3 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import ProFlow from "@/assets/proFlo-logos-2026-1.png";
 import ProDrain from "@/assets/proDrain-logos-1.png";
 import CPVC from "@/assets/cpvc-logo-2026.png";
@@ -8,15 +6,13 @@ import Proflowpic from "@/assets/ProfowDSC_0216.jpg";
 import ProDrainPic from "@/assets/ProDrainDSC_0316.png";
 import Protankpic from "@/assets/ProtankDSC_0060.png";
 import cpvcpic from "@/assets/CPVCDSC_0074.png";
-import React from 'react';
-import { FloatingWhatsApp } from '@digicroz/react-floating-whatsapp';
 import ScrollReveal from "@/components/ScrollReveal";
 
 
 
 const Services = () => {
   return (
-    <section id="achievement" className="py-24 bg-gradient-to-b from-background to-secondary/20">
+    <section id="brands" className="py-24 bg-gradient-to-b from-background to-secondary/20">
       {/* Background Image with Overlay */}
       
 

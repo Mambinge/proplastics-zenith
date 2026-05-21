@@ -6,10 +6,7 @@ import SAPPMA from "@/assets/certification-logos-2.png";
 import IFPA from "@/assets/certification-logos-3.png";
 import SAZ from "@/assets/certification-logos-4.png";
 import Aniversary from "@/assets/Mark-Proplastics-2026.png";
-import React from 'react';
-import { FloatingWhatsApp } from '@digicroz/react-floating-whatsapp'; //
-import { useNavigate, Link } from 'react-router-dom';
-import Privacy from "@/components/Privacy-Policy";
+import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 
 
@@ -18,7 +15,13 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 
 const Hero = () => {
-   const navigate = useNavigate(); // Initialize the hook
+  const certificationLogos = [
+    { src: SABS, alt: "SABS certification mark" },
+    { src: SAPPMA, alt: "SAPPMA member mark" },
+    { src: IFPA, alt: "IFPA association mark" },
+    { src: SAZ, alt: "SAZ certification mark" },
+    { src: Aniversary, alt: "Proplastics anniversary mark" },
+  ];
 
  
   return (
@@ -53,7 +56,7 @@ const Hero = () => {
 
           {/* Main Heading */}
           <ScrollReveal animation="reveal-up" delay={100} threshold={0}>
-            <h1 className="text-6xl sm:text-7xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
               Pipe systems that last
               <span className="block text-primary mt-2">Solutions for Africa</span>
             </h1>
@@ -62,23 +65,11 @@ const Hero = () => {
 
           {/* Description */}
           <ScrollReveal animation="reveal-up" delay={200} threshold={0}>
-            <p className="text-xl sm:text-2xl text-muted-foreground mb-8 leading-relaxed max-w-2xl">
+            <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl">
               Manufacturing premium PVC and HDPE pipe systems for water reticulation, 
               irrigation, mining, and construction across Southern Africa.
             </p>
           </ScrollReveal>
-          <FloatingWhatsApp
-      phoneNumber="+263 772521154" // Replace with your number
-      accountName="Proplastics Sales"
-      darkMode={true}
-      notification={true}
-      // ...other props
-    />
-         
-
-
-
-
           {/* CTA Buttons */}
           <ScrollReveal animation="reveal-up" delay={300} threshold={0}>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -95,16 +86,38 @@ const Hero = () => {
               </Link>
             </div>
           </ScrollReveal>
-          
+
+          <ScrollReveal animation="reveal-up" delay={350} threshold={0}>
+            <nav
+              aria-label="Homepage quick links"
+              className="mt-6 flex flex-wrap gap-2"
+            >
+              {[
+                { label: "About", href: "#about" },
+                { label: "Highlights", href: "#achievement" },
+                { label: "Products", href: "#products" },
+                { label: "Brands", href: "#brands" },
+                { label: "Sustainability", href: "#sustainability" },
+              ].map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="px-3 py-1.5 rounded-full border border-border bg-background/80 text-xs font-semibold text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </ScrollReveal>
 
           {/* Certification Logos */}
           <ScrollReveal animation="reveal-up" delay={400} threshold={0}>
             <div className="flex flex-wrap items-center gap-8 md:gap-12 mt-12 pt-12 border-t border-border">
-              {[SABS, SAPPMA, IFPA, SAZ, Aniversary].map((logo, index) => (
-                <div key={index} className="flex flex-1 items-center justify-center grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 hover:scale-110">
+              {certificationLogos.map((logo) => (
+                <div key={logo.alt} className="flex flex-1 items-center justify-center grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 hover:scale-110">
                   <img
-                    src={logo}
-                    alt="Certification Logo"
+                    src={logo.src}
+                    alt={logo.alt}
                     className="max-h-12 w-auto object-contain"
                   />
                 </div>

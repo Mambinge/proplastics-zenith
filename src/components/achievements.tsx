@@ -17,7 +17,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 const Achievement = () => {
 
   return (
-    <section id="achievement" className="py-20 bg-secondary/10">
+    <section id="achievement" className="py-24 bg-secondary/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
           {[

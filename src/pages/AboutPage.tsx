@@ -1,13 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import {
-  Building2,
   History,
   ShieldCheck,
-  Target,
-  Eye,
   Gem,
   Users,
   Award,
@@ -26,6 +24,14 @@ import hdpeImg from "@/assets/products-hdpe.jpg";
 import protankImg from "@/assets/ProtankDSC_0060.JPG";
 import prodrainImg from "@/assets/ProDrainDSC_0316.JPG";
 import proflowImg from "@/assets/ABOUTUSLANDING.png";
+import chairmanGregoryImg from "@/assets/Cooperate/optimized/Chairman-Gregory Sebborn.jpg";
+import herbertMashanyareImg from "@/assets/Cooperate/optimized/Non Executive Director - Herbert Mashanyare.jpg";
+import sandraRobertsImg from "@/assets/Cooperate/optimized/Non Executive Director - Sandra Roberts.jpg";
+import paddyZhandaImg from "@/assets/Cooperate/optimized/Non Executive Director - Paddy T Zhanda Jnr.jpg";
+import canadaMalungaImg from "@/assets/Cooperate/optimized/Non Executive Director - Canada Malunga.jpg";
+import pascalChangundaImg from "@/assets/Cooperate/optimized/CEO -Pascal Changunda.jpg";
+import bennyDedaImg from "@/assets/Cooperate/optimized/Non Executive Director - Benny T Deda.jpg";
+import genericNonExecutiveImg from "@/assets/Cooperate/optimized/Non Executive Director - Non Executive Director.jpg";
 
 // ===========================
 // TIMELINE DATA
@@ -89,50 +95,50 @@ const boardMembers = [
   {
     name: "Mr. Gregory Sebborn",
     role: "Non-Executive Board Chairman",
-    image: "https://www.proplastics.co.zw/images/chairman.JPG",
+    image: chairmanGregoryImg,
     bio: "Gregory served as Managing Director of the Zimbabwe and Southern African operations of the Rennies Group of Companies. He is also a founding Director and former Group Managing Director of Zimplats Holdings Limited and Managing Director of Zimbabwe Platinum Mines. He served as a Partner at Renaissance Partners, a Russian based Investment Bank. Gregory is currently a consultant for special mining projects and developments in Africa and serves as a non-executive Director of several companies including Stanbic Bank Zimbabwe.",
   },
   {
     name: "Mr. Herbert S. Mashanyare",
     role: "Non-Executive Director",
-    image: "https://www.proplastics.co.zw/images/h.mashanyare.jpg",
+    image: herbertMashanyareImg,
     bio: "Herbert is a former mining executive and until recently was an Executive Director for Mimosa Mines in Zimbabwe. Prior to that, Herbert held several senior positions with Union Carbide and Zimasco. Herbert holds a Bachelor of Science in Chemistry and a Masters of Philosophy in Process Research from the University of Zimbabwe. He also holds a Master of Science in Process Engineering Design from the University of London.",
   },
   {
     name: "Mrs. Sandra Roberts",
     role: "Non-Executive Director",
-    image: "https://www.proplastics.co.zw/images/Sandra_Roberts.jpg",
-    bio: "Sandra is a proven Agribusiness Specialist and Project Manager with over twenty years of experience in commercial crop production, donor funded agricultural initiatives and horticultural research. Sandra holds a Master of Science Agriculture (Horticulture) (Cum Laude) and a Bachelor of Science Agriculture (Horticulture) Cum Laude, Dux student from the University of Natal, Pietermariztburg, South Africa. In addition, Sandra holds multiple memberships in international and regional agricultural and investment associations.",
+    image: sandraRobertsImg,
+    bio: "Sandra is a proven Agribusiness Specialist and Project Manager with over twenty years of experience in commercial crop production, donor funded agricultural initiatives and horticultural research. Sandra holds a Master of Science Agriculture (Horticulture) (Cum Laude) and a Bachelor of Science Agriculture (Horticulture) Cum Laude, Dux student from the University of Natal, Pietermariztburg, South Africa. In addition, Sandra holds the following membership: Crops Life International, formerly Agricultural Chemical Industry Association (ACIA); Women's University in Africa Council; African Women in Agriculture - Zimbabwean chapter of the Graca Machel Trust; Facilitator of Investment in Excellence Program with the Pacific Institute; and Chair of Market Linkage Association (MLA) Zimbabwe.",
   },
   {
     name: "Mr. Paddy Tongai Zhanda (Jnr)",
     role: "Non-Executive Director",
-    image: "https://www.proplastics.co.zw/images/Paddy_Zhanda.jpg",
+    image: paddyZhandaImg,
     bio: "Paddy holds a Bachelor of Commerce in Accounting Science from the University of South Africa and completed his Articles of Clerkship with Deloitte & Touche. Paddy is a Director of a number of companies including Aurora Agricultural Ventures & Processors (Private) Limited.",
   },
   {
     name: "Mr. Canada Malunga",
     role: "Non-Executive Director",
-    image: "https://www.proplastics.co.zw/images/Canada_Malunga.jpg",
+    image: canadaMalungaImg,
     bio: "Canada holds Master’s in Business Administration (Manchester) and Bachelor of Laws (UNISA) degrees and is a Chartered Accountant (Zimbabwe). He is the immediate former Chief Executive Officer at Masimba Holdings Limited, the leading construction Company in Zimbabwe. He is the past President of the Institute of Chartered Accountants of Zimbabwe and is a Non-Executive Director at FBC Holdings Limited. Canada previously served as Managing Director at Proplastics Limited.",
   },
   {
     name: "Mr. Paschal Changunda",
     role: "Chief Executive Officer",
-    image: "https://www.proplastics.co.zw/images/Paschal_Changunda.jpg",
+    image: pascalChangundaImg,
     bio: "Paschal is a qualified Chartered Accountant (Zimbabwe) and is a holder of a Masters Degree in Business Leadership (MBL) from the University of South Africa (UNISA). He served his articles with Deloitte & Touche. Paschal has previously worked for Cairns Foods where he was Finance Manager, and Rainbow Tourism Group, where he joined as Finance Manager and became Finance Director in 2004 until 2013. Prior to joining Proplastics, he was Director – Finance & Administration with ZimTrade.",
   },
   {
     name: "Mr. Benny Tichaona Deda",
     role: "Non-Executive Director",
-    image: "https://www.proplastics.co.zw/images/Benny_Deda.jpg",
-    bio: "Benny is a holder of an MBA from Edinburgh Heriot Watt Business School (UK). He is also a qualified Chartered Management Accountant (CIMA) (UK), Certified Public Accountant (CPA) (Kenya) and Chartered Secretary (CIS) (Zimbabwe). He sits on several Boards in health care provision, financial services and education sectors. Currently in semi-retirement, Benny previously was the Chief Executive Officer of Baines Imaging Group and the Avenues Clinic.",
+    image: bennyDedaImg,
+    bio: "Benny is a holder of an MBA from Edinburgh Heriot Watt Business School (UK). He is also a qualified Chartered Management Accountant (CIMA) (UK), Certified Public Accountant (CPA) (Kenya) and Chartered Secretary (CIS) (Zimbabwe). He sits on several Boards in health care provision, financial services and education sectors. He currently chairs Vivat Health Solutions (Pvt) Ltd. Currently in semi-retirement, Benny previously was the Chief Executive Officer of Baines Imaging Group, the Avenues Clinic, among other senior executive positions he held over his working career.",
   },
   {
     name: "Mrs. Thembiwe Chikosi Mazingi",
     role: "Non-Executive Director",
-    image: "https://www.proplastics.co.zw/images/Thembiwe_Mazingi.JPG",
-    bio: "Thembiwe holds a Master's in Business Administration and a Bachelor of Laws degree from the University of Zimbabwe. She is a registered Legal Practitioner and Managing Partner at Coghlan, Welsh & Guest. She is a Non-Executive Director at Axia Corporation Limited, Ariston Holdings, and African Century Limited.",
+    image: genericNonExecutiveImg,
+    bio: "Thembiwe holds a Master's in Business Administration and a Bachelor of Laws degree from the University of Zimbabwe; a Post-Graduate Certificate in Advanced Taxation; an Advanced Programme in Value Added Tax; an Advanced Corporate and Securities Law Certificate from UNISA; and an Advanced Professional Certificate in International Taxation (IBFD Amsterdam). Thembiwe is a registered Legal Practitioner and Managing Partner at Coghlan, Welsh & Guest. She is a Non-Executive Director at Axia Corporation Limited, Ariston Holdings, and African Century Limited.",
   },
 ];
 
@@ -175,17 +181,12 @@ const governancePillars = [
   },
 ];
 
-// ===========================
-// TAB NAVIGATION
-// ===========================
-const tabs = [
-  { id: "overview", label: "Overview", icon: Building2 },
-  { id: "history", label: "Our History", icon: History },
-  { id: "governance", label: "Corporate Governance", icon: ShieldCheck },
-];
-
 const AboutPage = () => {
-  const [activeTab, setActiveTab] = useState("overview");
+  const [expandedBios, setExpandedBios] = useState<Record<string, boolean>>({});
+
+  const toggleBio = (memberName: string) => {
+    setExpandedBios((prev) => ({ ...prev, [memberName]: !prev[memberName] }));
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -199,114 +200,52 @@ const AboutPage = () => {
           subtitle="Discover who we are, our rich heritage of manufacturing excellence, and the governance principles that guide every decision we make."
         />
 
+        <div className="container mx-auto px-4 mt-12 space-y-24">
+          <nav
+            aria-label="About page section navigation"
+            className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-3"
+          >
+            <a
+              href="#journey"
+              className="px-4 py-2 rounded-full border border-border text-sm text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              Journey
+            </a>
+            <a
+              href="#governance"
+              className="px-4 py-2 rounded-full border border-border text-sm text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              Governance
+            </a>
+            <a
+              href="#board"
+              className="px-4 py-2 rounded-full border border-border text-sm text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              Board
+            </a>
+          </nav>
 
-        {/* ============ TAB BAR ============ */}
-        <div className="container mx-auto px-4 mt-12">
-          <div className="flex flex-wrap justify-center gap-2 mb-16">
-            {tabs.map((tab) => (
-              <Button
-                key={tab.id}
-                variant={activeTab === tab.id ? "default" : "outline"}
-                onClick={() => setActiveTab(tab.id)}
-                className="rounded-full px-6 gap-2"
-              >
-                <tab.icon className="h-4 w-4" />
-                {tab.label}
+          <section className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Button asChild size="lg" className="w-full rounded-full font-semibold">
+                <Link to="/contact">
+                  Request a Quote
+                  <ChevronRight className="h-4 w-4 ml-1" />
+                </Link>
               </Button>
-            ))}
-          </div>
-
-          {/* ============================================================ */}
-          {/* OVERVIEW SECTION                                              */}
-          {/* ============================================================ */}
-          {activeTab === "overview" && (
-            <div className="max-w-5xl mx-auto animate-fade-in space-y-12">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6">
-                  <h2 className="text-3xl md:text-4xl font-bold">
-                    Zimbabwe's Premier Plastic Piping Manufacturer
-                  </h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    <strong className="text-primary">Proplastics Zimbabwe Limited</strong> is the
-                    premier manufacturer and supplier of plastic pipe systems and fittings in
-                    Zimbabwe and the broader Southern African region.
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    With over three decades of manufacturing excellence, we deliver engineered
-                    solutions for water supply, sanitation, mining, telecommunications, and
-                    agricultural infrastructure — all manufactured to the highest international
-                    standards.
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Listed on the Zimbabwe Stock Exchange (PROL.zw), Proplastics serves both
-                    domestic and regional markets, exporting to Zambia, Mozambique, Malawi,
-                    Botswana, and the broader SADC region.
-                  </p>
-                </div>
-                <div className="relative rounded-3xl overflow-hidden border border-border shadow-2xl group">
-                  <img
-                    src={heroImg}
-                    alt="Proplastics manufacturing facility"
-                    loading="lazy"
-                    className="w-full h-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                </div>
-              </div>
-
-              {/* Vision / Mission / Values cards */}
-              <div className="grid sm:grid-cols-3 gap-6">
-                <div className="bg-card p-8 rounded-2xl border border-border hover:border-primary/50 transition-colors group">
-                  <Eye className="h-10 w-10 text-primary mb-5 group-hover:scale-110 transition-transform" />
-                  <h4 className="font-bold text-xl mb-3 text-foreground">Our Vision</h4>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    To be the recognized leader in the provision of world-class plastic piping
-                    systems in Southern Africa.
-                  </p>
-                </div>
-                <div className="bg-card p-8 rounded-2xl border border-border hover:border-primary/50 transition-colors group">
-                  <Target className="h-10 w-10 text-primary mb-5 group-hover:scale-110 transition-transform" />
-                  <h4 className="font-bold text-xl mb-3 text-foreground">Our Mission</h4>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    To deliver engineered plastic piping solutions that reliably build our
-                    continent's vital infrastructure.
-                  </p>
-                </div>
-                <div className="bg-card p-8 rounded-2xl border border-border hover:border-primary/50 transition-colors group">
-                  <Gem className="h-10 w-10 text-primary mb-5 group-hover:scale-110 transition-transform" />
-                  <h4 className="font-bold text-xl mb-3 text-foreground">Our Values</h4>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Integrity, Innovation, Customer Focus, Safety, and Environmental Stewardship
-                    guide every decision we make.
-                  </p>
-                </div>
-              </div>
-
-              {/* Stats bar */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {[
-                  { value: "36+", label: "Years of Excellence" },
-                  { value: "5+", label: "Countries Served" },
-                  { value: "500+", label: "Product Lines" },
-                  { value: "ISO", label: "Certified Quality" },
-                ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="text-center p-6 rounded-2xl bg-primary/5 border border-primary/10"
-                  >
-                    <p className="text-3xl md:text-4xl font-bold text-primary">{stat.value}</p>
-                    <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
+              <Button asChild variant="outline" size="lg" className="w-full rounded-full font-semibold">
+                <Link to="/products">
+                  Explore Products
+                  <ChevronRight className="h-4 w-4 ml-1" />
+                </Link>
+              </Button>
             </div>
-          )}
+          </section>
 
           {/* ============================================================ */}
           {/* HISTORY TIMELINE SECTION                                      */}
           {/* ============================================================ */}
-          {activeTab === "history" && (
-            <div className="max-w-5xl mx-auto animate-fade-in">
+          <section id="journey" className="max-w-5xl mx-auto animate-fade-in scroll-mt-28">
               <div className="text-center mb-16 space-y-4">
                 <h2 className="text-3xl md:text-4xl font-bold">Our Journey</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -320,14 +259,14 @@ const AboutPage = () => {
                 {/* Center vertical line */}
                 <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/50 to-primary/20 md:-translate-x-px" />
 
-                <div className="space-y-12 md:space-y-16">
+                <div className="space-y-8 md:space-y-10">
                   {timelineEvents.map((event, index) => {
                     const isEven = index % 2 === 0;
                     return (
                       <div
                         key={event.year}
-                        className={cn(
-                          "relative flex flex-col md:flex-row items-start gap-6 md:gap-0 animate-fade-in",
+                          className={cn(
+                            "relative flex flex-col md:flex-row items-start gap-4 md:gap-0 animate-fade-in",
                           !isEven && "md:flex-row-reverse"
                         )}
                         style={{ animationDelay: `${index * 100}ms` }}
@@ -342,13 +281,13 @@ const AboutPage = () => {
                         {/* Content card */}
                         <div
                           className={cn(
-                            "ml-16 md:ml-0 md:w-[calc(50%-3rem)]",
+                            "ml-14 md:ml-0 md:w-[calc(50%-2.5rem)]",
                             isEven ? "md:pr-0 md:mr-auto" : "md:pl-0 md:ml-auto"
                           )}
                         >
                           <div className="group bg-card rounded-2xl border border-border hover:border-primary/40 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-xl">
                             {/* Image thumbnail */}
-                            <div className="relative h-48 overflow-hidden">
+                            <div className="relative h-44 overflow-hidden">
                               <img
                                 src={event.image}
                                 alt={event.title}
@@ -365,7 +304,7 @@ const AboutPage = () => {
                             </div>
 
                             {/* Text content */}
-                            <div className="p-6">
+                            <div className="p-5">
                               <h3 className="text-xl font-bold text-foreground mb-2">
                                 {event.title}
                               </h3>
@@ -385,21 +324,22 @@ const AboutPage = () => {
                   <div className="w-4 h-4 rounded-full bg-primary shadow-lg shadow-primary/30 border-4 border-background" />
                 </div>
               </div>
-            </div>
-          )}
+          </section>
 
           {/* ============================================================ */}
           {/* CORPORATE GOVERNANCE SECTION                                  */}
           {/* ============================================================ */}
-          {activeTab === "governance" && (
-            <div className="max-w-6xl mx-auto animate-fade-in space-y-16">
+          <section
+            id="governance"
+            className="max-w-6xl mx-auto animate-fade-in space-y-14 scroll-mt-28"
+          >
               {/* Intro */}
               <div className="text-center space-y-4 max-w-3xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold">Corporate Governance</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  At Proplastics, robust corporate governance is fundamental to creating long-term
-                  value for our shareholders, employees, and the communities we serve. We are
-                  committed to the principles of the King IV Code on Corporate Governance.
+                  The Board of Proplastics Limited is committed to adherence to the principles of
+                  good corporate governance in order to attain the goal of responsible corporate
+                  behaviour and full accountability to its shareholders and stakeholders.
                 </p>
               </div>
 
@@ -425,7 +365,7 @@ const AboutPage = () => {
               </div>
 
               {/* Board of Directors */}
-              <div>
+              <div id="board" className="scroll-mt-28">
                 <h3 className="text-2xl font-bold mb-3 text-center">Board of Directors</h3>
                 <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-8">
                   Our board provides strategic direction and oversight, ensuring the highest
@@ -449,19 +389,31 @@ const AboutPage = () => {
                         
                         <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform">
                           <h4 className="font-bold text-white text-lg leading-tight">{member.name}</h4>
-                          <p className="text-emerald-400 text-[10px] font-bold uppercase tracking-widest mt-1">
+                          <p className="text-emerald-300 text-xs font-bold uppercase tracking-wide mt-1">
                             {member.role}
                           </p>
                         </div>
                       </div>
 
-                      {/* Bio Content - Scrollable on hover or fixed height */}
-                      <div className="p-4 bg-card/80 backdrop-blur-sm border-t border-border/50">
-                        <div className="max-h-32 overflow-y-auto pr-2 custom-scrollbar">
-                          <p className="text-xs text-muted-foreground leading-relaxed italic">
-                            {member.bio}
-                          </p>
-                        </div>
+                      {/* Bio Content */}
+                      <div className="p-4 bg-card/80 backdrop-blur-sm border-t border-border/50 space-y-2">
+                        <p
+                          id={`bio-${member.name.replace(/\s+/g, "-").toLowerCase()}`}
+                          className="text-xs text-muted-foreground leading-relaxed italic"
+                        >
+                          {expandedBios[member.name]
+                            ? member.bio
+                            : `${member.bio.slice(0, 180).trimEnd()}...`}
+                        </p>
+                        <button
+                          type="button"
+                          onClick={() => toggleBio(member.name)}
+                          aria-expanded={Boolean(expandedBios[member.name])}
+                          aria-controls={`bio-${member.name.replace(/\s+/g, "-").toLowerCase()}`}
+                          className="text-[11px] font-semibold text-primary hover:text-primary/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm"
+                        >
+                          {expandedBios[member.name] ? "Read less" : "Read more"}
+                        </button>
                       </div>
 
                       {/* Accent highlight */}
@@ -489,8 +441,22 @@ const AboutPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button asChild size="lg" className="rounded-full font-semibold">
+                  <Link to="/contact">
+                    Talk to Our Team
+                    <ChevronRight className="h-4 w-4 ml-1" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="rounded-full font-semibold">
+                  <Link to="/investor-centre">
+                    Visit Investor Centre
+                    <ChevronRight className="h-4 w-4 ml-1" />
+                  </Link>
+                </Button>
+              </div>
+          </section>
         </div>
       </main>
 

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -11,6 +12,17 @@ import waterSewerageImg from "@/assets/PRODUCT-RANGELANDING.jpg";
 import telecomImg from "@/assets/ProfowDSC_0216.jpg";
 
 const Products = () => {
+  const [isPaused, setIsPaused] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => setPrefersReducedMotion(mediaQuery.matches);
+    updateMotionPreference();
+    mediaQuery.addEventListener("change", updateMotionPreference);
+    return () => mediaQuery.removeEventListener("change", updateMotionPreference);
+  }, []);
+
   const productSolutions = [
     {
       name: "Mining",
@@ -64,6 +76,7 @@ const Products = () => {
 
   // Duplicate the array for seamless infinite scroll
   const scrollItems = [...productSolutions, ...productSolutions];
+  const shouldAnimate = !prefersReducedMotion && !isPaused;
 
   return (
     <section id="products" className="py-24 bg-secondary/30 overflow-hidden">
@@ -78,23 +91,38 @@ const Products = () => {
               certified to international standards across all major sectors.
             </p>
           </div>
-          <Link to="/products">
-            <Button variant="outline" className="group">
-              View All Products
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => setIsPaused((prev) => !prev)}
+              className="px-4 py-2 rounded-md border border-border text-sm font-medium text-foreground hover:bg-card transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              aria-pressed={isPaused}
+              aria-label={isPaused ? "Resume product carousel animation" : "Pause product carousel animation"}
+            >
+              {isPaused ? "Resume motion" : "Pause motion"}
+            </button>
+            <Link to="/products">
+              <Button variant="outline" className="group">
+                View All Products
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
 
       {/* Auto-scrolling Carousel Container */}
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full overflow-hidden" aria-live="off">
         {/* Infinite Scroll Wrapper */}
-        <div className="flex w-fit hover:[animation-play-state:paused] animate-marquee">
+        <div
+          className={shouldAnimate ? "flex w-fit animate-marquee" : "flex w-fit flex-wrap justify-center"}
+          style={shouldAnimate ? { animationPlayState: "running" } : undefined}
+        >
           {scrollItems.map((solution, index) => (
             <div
               key={`${solution.name}-${index}`}
               className="w-[350px] md:w-[400px] flex-shrink-0 px-4"
+              aria-hidden={!prefersReducedMotion && index >= productSolutions.length}
             >
               <div className="bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl group h-full">
                 <div className="relative h-48 overflow-hidden">
