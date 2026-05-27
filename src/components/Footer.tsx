@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Linkedin, Mail } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Mail, Instagram } from "lucide-react";
 import { useLocation, Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/proplastics-logo.png";
@@ -27,10 +27,11 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Mail, href: "#contact", label: "Email" },
+    { icon: Facebook, href: "https://www.facebook.com/proplasticszimbabwe", label: "Facebook" },
+    { icon: Twitter, href: "https://x.com/proplasticszw", label: "X (Twitter)" },
+    { icon: Instagram, href: "https://www.instagram.com/proplasticszw/", label: "Instagram" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/proplasticszim/", label: "LinkedIn" },
+    { icon: Mail, href: "contact", label: "Email" },
   ];
 
   return (
