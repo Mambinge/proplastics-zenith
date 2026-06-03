@@ -1,202 +1,153 @@
-import { useState } from "react";
-import { Building2, History, ShieldCheck, ArrowRight, Target, Eye, Gem } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Facebook, Instagram, Linkedin, Youtube, ExternalLink, Calendar, Heart, Share2 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState<number>(0);
+  const socialFeed = [
+    {
+      platform: "LinkedIn",
+      icon: Linkedin,
+      iconColor: "text-blue-700 bg-blue-50",
+      date: "2 days ago",
+      text: "We are thrilled to announce the completion of our automated manufacturing line upgrade. This expansion increases our high-diameter HDPE pipe production capacity by 35%, helping us better support mining and irrigation projects across SADC! 🚀🔩",
+      tag: "#Infrastructure #MiningAfrica #Growth"
+    },
+    {
+      platform: "Facebook",
+      icon: Facebook,
+      iconColor: "text-blue-600 bg-blue-50",
+      date: "1 week ago",
+      text: "Driving sustainable progress. Over 30% of our Ardbennie facility is now powered by clean solar energy, reducing our carbon footprint while we manufacture the pipe systems that last. 🌞🌱",
+      tag: "#GoGreen #SolarEnergy #Sustainability"
+    },
+    {
+      platform: "Instagram",
+      icon: Instagram,
+      iconColor: "text-pink-600 bg-pink-50",
+      date: "2 weeks ago",
+      text: "Quality at our core. Every single Proplastics PVC and HDPE pipe carries the SABS and SAZ mark of excellence, backed by our industry-leading guarantee. Build with confidence. 🏆💧",
+      tag: "#QualityFirst #WaterSystems #Engineering"
+    }
+  ];
 
-  const options = [
-    {
-      id: "overview",
-      icon: Building2,
-      title: "Company Overview",
-      subtitle: "Leading the industry since 1988",
-      content: (
-        <div className="space-y-6 animate-fade-in">
-          <p className="text-lg leading-relaxed text-foreground">
-            <strong className="text-primary">Proplastics Zimbabwe Limited</strong> is the premier 
-            manufacturer and supplier of plastic pipe systems and fittings in Zimbabwe and the broader 
-            Southern African region.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-4 mt-8">
-            <div className="bg-background/50 p-6 rounded-xl border border-border">
-              <Eye className="h-8 w-8 text-primary mb-4" />
-              <h4 className="font-bold text-foreground mb-2">Our Vision</h4>
-              <p className="text-sm text-muted-foreground">To be the recognized leader in the provision of world-class plastic piping systems in Southern Africa.</p>
-            </div>
-            <div className="bg-background/50 p-6 rounded-xl border border-border">
-              <Target className="h-8 w-8 text-primary mb-4" />
-              <h4 className="font-bold text-foreground mb-2">Our Mission</h4>
-              <p className="text-sm text-muted-foreground">To deliver engineered plastic piping solutions that reliably build our continent's vital infrastructure.</p>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      id: "history",
-      icon: History,
-      title: "Our History",
-      subtitle: "A legacy of growth and innovation",
-      content: (
-        <div className="space-y-6 animate-fade-in">
-          <p className="text-lg leading-relaxed text-foreground mb-6">
-            With over three decades of manufacturing excellence, Proplastics has continually evolved 
-            to meet the infrastructure demands of a growing continent.
-          </p>
-          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
-            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-background bg-primary text-primary-foreground shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                <span className="text-xs font-bold">1988</span>
-              </div>
-              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-border bg-background/50 shadow-sm">
-                <h4 className="font-bold text-foreground">Establishment</h4>
-                <p className="text-sm text-muted-foreground mt-1">Founded as a subsidiary of the Murray & Roberts group, initially focusing on standard PVC pipes.</p>
-              </div>
-            </div>
-            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-background bg-primary text-primary-foreground shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                <span className="text-xs font-bold">2015</span>
-              </div>
-              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-border bg-background/50 shadow-sm">
-                <h4 className="font-bold text-foreground">ZSE Listing</h4>
-                <p className="text-sm text-muted-foreground mt-1">Successfully unbundled and listed independently on the Zimbabwe Stock Exchange (PROL.zw).</p>
-              </div>
-            </div>
-            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-background bg-primary text-primary-foreground shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                <span className="text-xs font-bold">2020+</span>
-              </div>
-              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-border bg-background/50 shadow-sm">
-                <h4 className="font-bold text-foreground">Modernization</h4>
-                <p className="text-sm text-muted-foreground mt-1">Commissioned a state-of-the-art automated manufacturing plant, expanding our HDPE and continuous profile lines.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      id: "governance",
-      icon: ShieldCheck,
-      title: "Corporate Governance",
-      subtitle: "Transparency, ethics, and quality at our core",
-      content: (
-        <div className="space-y-6 animate-fade-in">
-          <p className="text-lg leading-relaxed text-foreground">
-            At Proplastics, we believe that robust corporate governance is fundamental to creating long-term 
-            value for our shareholders, employees, and the communities we serve. 
-          </p>
-          <div className="grid sm:grid-cols-2 gap-4 mt-6">
-            <div className="flex gap-4 items-start p-4 rounded-xl border border-border bg-background/50 text-left">
-              <ShieldCheck className="h-6 w-6 text-primary shrink-0" />
-              <div>
-                <h4 className="font-bold text-foreground mb-1">Board of Directors</h4>
-                <p className="text-sm text-muted-foreground">Oversight provided by a diverse board committed to King IV principles of strong ethical leadership.</p>
-              </div>
-            </div>
-            <div className="flex gap-4 items-start p-4 rounded-xl border border-border bg-background/50 text-left">
-              <Gem className="h-6 w-6 text-primary shrink-0" />
-              <div>
-                <h4 className="font-bold text-foreground mb-1">ISO Certification</h4>
-                <p className="text-sm text-muted-foreground">Certified in ISO 9001 (Quality), ISO 14001 (Environment), and ISO 45001 (Occupational Health & Safety).</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
-    },
+  const socialLinks = [
+    { icon: Facebook, href: "https://www.facebook.com/proplasticszimbabwe", label: "Facebook", color: "hover:bg-blue-600 hover:text-white" },
+    { icon: Instagram, href: "https://www.instagram.com/proplasticszw/", label: "Instagram", color: "hover:bg-pink-600 hover:text-white" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/proplasticszim/", label: "LinkedIn", color: "hover:bg-blue-700 hover:text-white" },
+    { icon: Youtube, href: "https://www.youtube.com", label: "YouTube", color: "hover:bg-red-600 hover:text-white" }
   ];
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-background to-secondary/20 relative overflow-hidden">
-      {/* Abstract Background Elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full translate-y-1/3 -translate-x-1/3 blur-3xl" />
-
-      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        {/* Section Header */}
-        <ScrollReveal animation="reveal-up">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              About Proplastics
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Discover who we are, where we come from, and how we operate.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        {/* The 3 Options - Interactive Tabs Layout */}
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            
-            {/* Sidebar / Tab Triggers */}
-            <div className="lg:col-span-4 space-y-4">
-              {options.map((option, index) => (
-                <ScrollReveal 
-                  key={option.id} 
-                  animation="reveal-left" 
-                  delay={index * 100}
-                >
-                  <button
-                    onClick={() => setActiveTab(index)}
-                    className={cn(
-                      "w-full text-left p-6 rounded-2xl border transition-all duration-300 group flex items-start gap-4 hover-lift",
-                      activeTab === index 
-                        ? "bg-card border-primary/50 shadow-lg shadow-primary/5 scale-[1.02]" 
-                        : "bg-background/40 border-border hover:bg-card hover:border-border/80"
-                    )}
-                  >
-                    <div className={cn(
-                      "p-3 rounded-xl flex-shrink-0 transition-colors duration-300",
-                      activeTab === index ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary group-hover:bg-primary/20"
-                    )}>
-                      <option.icon className="h-6 w-6" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className={cn(
-                        "text-xl font-bold transition-colors duration-300",
-                        activeTab === index ? "text-foreground" : "text-foreground/80 group-hover:text-foreground"
-                      )}>
-                        {option.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mt-1 hidden sm:block">
-                        {option.subtitle}
-                      </p>
-                    </div>
-                    <ArrowRight className={cn(
-                      "h-5 w-5 shrink-0 self-center transition-all duration-300 opacity-0 -translate-x-4",
-                      activeTab === index && "opacity-100 translate-x-0 text-primary"
-                    )} />
-                  </button>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            {/* Content Area */}
-            <div className="lg:col-span-8">
-              <div className="bg-card border border-border/80 rounded-3xl p-8 md:p-12 shadow-xl min-h-[450px]">
-                {options.map((option, index) => (
-                  <div 
-                    key={option.id}
-                    className={cn(
-                      "transition-all duration-500",
-                      activeTab === index ? "opacity-100 translate-y-0 relative z-10" : "opacity-0 absolute translate-y-4 -z-10 pointer-events-none"
-                    )}
-                  >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
-                      <option.icon className="h-4 w-4" />
-                      {option.title}
-                    </div>
-                    {option.content}
-                  </div>
-                ))}
+    <section id="about" className="py-24 bg-white relative overflow-hidden">
+      {/* Background visual strip at side */}
+      <div className="absolute top-0 right-0 w-2.5 h-full bg-gradient-to-b from-primary via-primary/50 to-primary" />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
+          
+          {/* Left Column: Who We Are */}
+          <div className="lg:col-span-6 space-y-6">
+            <ScrollReveal animation="reveal-left">
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+                Introduction
               </div>
-            </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+                Who We <span className="text-primary">Are</span>
+              </h2>
+            </ScrollReveal>
 
+            <ScrollReveal animation="reveal-left" delay={150}>
+              <div className="space-y-4 text-sm sm:text-base text-foreground leading-relaxed">
+                <p className="font-bold text-foreground">
+                  Proplastics Zimbabwe Limited is the premier manufacturer and supplier of world-class plastic piping systems and fittings in the Southern African region.
+                </p>
+                <p>
+                  Established with roots dating back over 60 years, we have grown to become the industry-leading authority on pipe extrusion and rotomoulding solutions. Operating out of our highly modernized, automated facility in Harare, we design and supply critical pipelines for civil engineering, agriculture, mining, housing, and telecommunication networks.
+                </p>
+                <p>
+                  Our commitment to excellence is supported by rigorous quality marks, including ISO 9001, ISO 14001, and ISO 45001 certifications. We combine cutting-edge technology with environmental stewardship to deliver piping solutions that reliably build our continent's infrastructure.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
+
+          {/* Right Column: Social Media Window */}
+          <div className="lg:col-span-6 space-y-6">
+            <ScrollReveal animation="reveal-right">
+              {/* Connect Section Header */}
+              <div className="bg-slate-50 border border-border p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="text-center sm:text-left">
+                  <h3 className="font-extrabold text-sm uppercase tracking-wider text-foreground">Stay Connected</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">Follow our official feeds for live updates</p>
+                </div>
+                {/* Social Icon Grid */}
+                <div className="flex gap-2">
+                  {socialLinks.map((item, idx) => (
+                    <a
+                      key={idx}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={item.label}
+                      className={`h-10 w-10 bg-white border border-border rounded-xl flex items-center justify-center text-foreground/70 transition-all duration-300 shadow-sm ${item.color} hover:scale-105`}
+                    >
+                      <item.icon className="h-5 w-5" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Social Media Live Feed Window */}
+            <ScrollReveal animation="reveal-right" delay={200}>
+              <div className="bg-white border border-primary/20 rounded-3xl overflow-hidden shadow-lg">
+                {/* Window header */}
+                <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-300">Live Corporate Updates</span>
+                  </div>
+                  <span className="text-[10px] font-bold text-primary flex items-center gap-1">
+                    proplastics.co.zw <ExternalLink className="h-3 w-3" />
+                  </span>
+                </div>
+
+                {/* Feed Items Container */}
+                <div className="divide-y divide-slate-100 p-2 max-h-[380px] overflow-y-auto">
+                  {socialFeed.map((post, idx) => (
+                    <div key={idx} className="p-4 space-y-2 hover:bg-slate-50/50 transition-colors">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className={`p-1.5 rounded-lg ${post.iconColor}`}>
+                            <post.icon className="h-4 w-4" />
+                          </div>
+                          <span className="font-extrabold text-xs text-slate-800">{post.platform} Update</span>
+                        </div>
+                        <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
+                          <Calendar className="h-3.5 w-3.5" />
+                          {post.date}
+                        </div>
+                      </div>
+                      
+                      <p className="text-xs text-foreground/80 leading-relaxed font-medium">
+                        {post.text}
+                      </p>
+
+                      <div className="flex items-center justify-between pt-1">
+                        <span className="text-[10px] font-bold text-primary tracking-wide">
+                          {post.tag}
+                        </span>
+                        <div className="flex items-center gap-2 text-slate-400">
+                          <Heart className="h-3.5 w-3.5 hover:text-red-500 transition-colors cursor-pointer" />
+                          <Share2 className="h-3.5 w-3.5 hover:text-primary transition-colors cursor-pointer" />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
         </div>
       </div>
     </section>

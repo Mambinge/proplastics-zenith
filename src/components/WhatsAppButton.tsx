@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const WHATSAPP_NUMBER = "263771234567"; // ← Replace with your actual WhatsApp number (no + or spaces)
+export const WHATSAPP_NUMBER = "263789819037"; // ← Replace with your actual WhatsApp number (no + or spaces)
 export const WHATSAPP_MESSAGE = "Hello! I'd like to enquire about Proplastics products.";
 
 export const getWhatsAppUrl = (message?: string) =>

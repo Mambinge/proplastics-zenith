@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Achievements from "@/components/achievements";
 import PropServices from "@/components/Services";
 import ScrollReveal from "@/components/ScrollReveal";
+import Testimonials from "@/components/Testimonials";
 import { FileText, MessageCircle, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getWhatsAppUrl } from "@/components/WhatsAppButton";
@@ -30,6 +31,9 @@ const Index = () => {
         </ScrollReveal>
         <ScrollReveal animation="reveal-left">
           <PropServices />
+        </ScrollReveal>
+        <ScrollReveal animation="reveal-up">
+          <Testimonials />
         </ScrollReveal>
         <ScrollReveal animation="reveal-right">
           <Sustainability />

@@ -11,6 +11,7 @@ import ProductsPage from "./pages/Products";
 import AboutPage from "./pages/AboutPage";
 import PrivacyPolicy from "./components/Privacy-Policy";
 import NotFound from "./pages/NotFound";
+import Gallery from "./pages/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/investor-centre" element={<InvestorCentre />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

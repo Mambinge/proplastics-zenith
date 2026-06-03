@@ -30,67 +30,66 @@ const Hero = () => {
     
     <section id="home" className="relative min-h-screen flex items-center pt-20">
       
-      {/* Background Image with Overlay */}
+      {/* Background Image with Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src={heroImage}
           alt="Proplastics manufacturing facility"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 via-50% to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
       </div>
-      
 
       {/* Content */}
-      
       <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl text-left">
+          
           {/* Badge */}
           <ScrollReveal animation="reveal-up" threshold={0}>
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <CheckCircle2 className="h-4 w-4" />
+            <div className="inline-flex items-center gap-2 bg-primary/20 text-white border border-primary/30 px-4 py-2 rounded-full text-xs sm:text-sm font-bold mb-6 tracking-wide backdrop-blur-sm">
+              <CheckCircle2 className="h-4 w-4 text-primary" />
               Zimbabwe's Leading Pipe Systems Manufacturer
             </div>
           </ScrollReveal>
-          
 
           {/* Main Heading */}
           <ScrollReveal animation="reveal-up" delay={100} threshold={0}>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6.5xl font-black text-white mb-6 leading-tight uppercase tracking-tight">
               Pipe systems that last
               <span className="block text-primary mt-2">Solutions for Africa</span>
             </h1>
           </ScrollReveal>
-          
 
           {/* Description */}
           <ScrollReveal animation="reveal-up" delay={200} threshold={0}>
-            <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl">
               Manufacturing premium PVC and HDPE pipe systems for water reticulation, 
               irrigation, mining, and construction across Southern Africa.
             </p>
           </ScrollReveal>
+
           {/* CTA Buttons */}
           <ScrollReveal animation="reveal-up" delay={300} threshold={0}>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/products">
-                <Button size="lg" className="group hover-lift w-full sm:w-auto h-14 px-8 text-base font-bold uppercase tracking-wider">
+                <Button size="lg" className="group hover-lift w-full sm:w-auto h-14 px-8 text-sm font-extrabold uppercase tracking-wider bg-primary hover:bg-primary-hover text-white border-0 shadow-lg">
                   Explore Products
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="hover-lift w-full sm:w-auto h-14 px-8 text-base font-bold uppercase tracking-wider border-primary text-primary hover:bg-primary hover:text-white">
+                <Button size="lg" variant="outline" className="bg-transparent hover-lift w-full sm:w-auto h-14 px-8 text-sm font-extrabold uppercase tracking-wider border-2 border-white text-white hover:bg-white hover:text-black transition-colors">
                   Get a Quote
                 </Button>
               </Link>
             </div>
           </ScrollReveal>
 
+          {/* Quick scroll links */}
           <ScrollReveal animation="reveal-up" delay={350} threshold={0}>
             <nav
               aria-label="Homepage quick links"
-              className="mt-6 flex flex-wrap gap-2"
+              className="mt-8 flex flex-wrap gap-2"
             >
               {[
                 { label: "About", href: "#about" },
@@ -102,7 +101,7 @@ const Hero = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="px-3 py-1.5 rounded-full border border-border bg-background/80 text-xs font-semibold text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  className="px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-white hover:border-primary/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   {item.label}
                 </a>
@@ -112,27 +111,21 @@ const Hero = () => {
 
           {/* Certification Logos */}
           <ScrollReveal animation="reveal-up" delay={400} threshold={0}>
-            <div className="flex flex-wrap items-center gap-8 md:gap-12 mt-12 pt-12 border-t border-border">
+            <div className="flex flex-wrap items-center gap-6 md:gap-10 mt-12 pt-8 border-t border-white/10">
               {certificationLogos.map((logo) => (
-                <div key={logo.alt} className="flex flex-1 items-center justify-center grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 hover:scale-110">
+                <div key={logo.alt} className="flex items-center justify-center grayscale brightness-[1.5] opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500 hover:scale-105">
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="max-h-12 w-auto object-contain"
+                    className="max-h-8 sm:max-h-10 w-auto object-contain"
                   />
                 </div>
               ))}
             </div>
           </ScrollReveal>
 
-           
         </div>
-        {/* Stats */}
-          
       </div>
-      
-      
-      
     </section>
     
     
